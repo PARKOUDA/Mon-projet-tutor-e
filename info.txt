@@ -1,0 +1,11 @@
+$admin = new User();
+        $admin->Matricule = 'N00250020182';
+        $admin->NomComplet = 'Sita Kaboré';
+        $admin->Fonction = 'Enseignant';
+        $admin->Poste = 'Coordonateur';
+        $admin->Telephone = '50020182';
+        $admin->email = 'sita@gmail.com';
+        $admin->password = 'password';
+        $admin->save();
+
+         
