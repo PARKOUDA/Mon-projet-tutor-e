@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Structure;
 use App\Models\Enseignant;
+use App\Models\Departement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,5 +26,14 @@ class Ufr extends Model
      */
     public function structure(){
         return $this->belongsTo(Structure::class);
+    }
+
+     /**
+     * permet de reccuperer tout les départements qui ont une ufr spécifique
+     *
+     * @return void
+     */
+    public function departements(){
+        return $this->hasMany(Departement::class);
     }
 }
