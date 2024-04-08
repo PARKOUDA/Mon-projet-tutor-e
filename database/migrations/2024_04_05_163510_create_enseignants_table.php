@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("Email");
             $table->string("Mot de passe");
             $table->enum("Titre",["Enseignant chercheur", "Enseignant à temps plein"]);
+            $table->string("Photo");
             //crée une contrainte qui ne peut être négative et crée une clé étrangère qui fait reference à l'id de la table grade
             // $table->unsignedBigInteger("grade_id"); 
             // $table->foreign("grade_id")->references("id")->on("grade"); 
