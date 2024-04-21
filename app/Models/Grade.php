@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Enseignant;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Grade extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'Nom'
+    ];
     /**
      * permet de reccuperer tout les enseignants qui ont un grades spécifique
      *

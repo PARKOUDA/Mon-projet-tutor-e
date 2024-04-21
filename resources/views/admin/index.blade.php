@@ -4,9 +4,11 @@
 
 @section("contenu")
     <!-- la partie de bienvenue -->
-
     <div class="main-panel">
         <div class="content-wrapper">
+          @if (session('success'))
+            <div class="alert alert-success">{{session('success')}} </div>
+          @endif
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="d-flex justify-content-between flex-wrap">
@@ -28,42 +30,14 @@
 
           <!-- fin de bienvenue -->
 
-          <!-- évènement récent -->
-          <div class="row">
-            <div class="col-md-12 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">Gestion du personnels</p>
-                  <div class="table-responsive">
-                    <table id="recent-purchases-listing" class="table">
-                      <thead>
-                        <tr>
-                          <th>Matricule</th>
-                          <th>Nom & Prénom</th>
-                          <th>Fonction</th>
-                          <th>Poste</th>
-                          <th>Email</th>
-                          <th>Telephone</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($users as $user)
-                          <tr>
-                            <td> {{ $user->Matricule }} </td>
-                            <td> {{ $user->NomComplet }}</td>
-                            <td> {{ $user->Fonction }}</td>
-                            <td> {{ $user->Poste }}</td>
-                            <td> {{ $user->Telephone }}</td>
-                            <td> {{ $user->email }}</td>
-                          </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+          
+
+          {{-- <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+            <div>
+              <a href="{{ route('admin.listes.enseignants') }}" class="btn btn-primary me-5">Enseignants</a>
+              <a href="{{ route('admin.listes.personnel-atos') }}" class="btn btn-warning">Personnels ATOS</a>
             </div>
-          </div>
+          </div> --}}
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
