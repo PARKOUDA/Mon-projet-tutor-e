@@ -7,7 +7,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link  {{request()->routeIs('admin.listes.personnels') ? 'color' : ''}}" href="{{route('admin.listes.personnels')}}">
+        <a class="nav-link {{request()->routeIs('admin.listes.personnels') ? 'color' : ''}}" href="{{route('admin.listes.personnels')}}">
           <i class="mdi mdi-account-multiple menu-icon"></i>
           <span class="menu-title">Personnels</span>
         </a>

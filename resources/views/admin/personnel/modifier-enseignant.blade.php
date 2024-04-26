@@ -41,6 +41,14 @@
                         <div class="text-danger">{{$message}} </div>
                     @enderror
                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <label for="" class="form-label">Genre</label>
+                    <input type="text" placeholder="Genre" name="Genre" class="form-control" value="{{$enseignant->Genre}}">
+    
+                    @error('Genre')
+                        <div class="text-danger">{{$message}} </div>
+                    @enderror
+                </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <label for="" class="form-label">Email</label>
                     <input type="text" placeholder="Email" name="Email" class="form-control" value="{{$enseignant->Email}}">

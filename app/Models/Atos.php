@@ -8,6 +8,7 @@ use Monolog\Handler\RollbarHandler;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Atos extends Model
 {
@@ -18,13 +19,16 @@ class Atos extends Model
         'Prenom',
         'Telephone',
         'Email',
-        'Mot de passe',
+        'Genre',
+        'Mot_de_passe',
         'structure_id',
         'Photo',
         'emploi_id',
         'fao_id',
         'role_id',
     ];
+
+    protected $table = 'atos';
     /**
      * reccupère la structure d'un personnel atos
      *

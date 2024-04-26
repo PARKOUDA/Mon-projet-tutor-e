@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'enseignant' => [
+            'driver' => 'session',
+            'provider' => 'enseignants', // Le nom du fournisseur d'authentification
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'enseignants' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Enseignant::class,
         ],
 
         // 'users' => [

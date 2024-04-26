@@ -15,7 +15,7 @@
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }} </div>
             @endif
-
+                <h2>Gestion des fonctions administratives occupés</h2>
             {{-- bouton de l'ajout  --}}
             <div class="d-flex justify-content-end">
                 <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal"

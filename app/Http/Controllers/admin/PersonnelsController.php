@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Fao;
 use App\Models\Ufr;
 use App\Models\Atos;
-use App\Models\Post;
 use App\Models\Role;
 use App\Models\Grade;
 use App\Models\Titre;
+use App\Models\Emploi;
+use App\Models\Fonction;
 use App\Models\Structure;
 use App\Models\Enseignant;
 use App\Models\Departement;
 use Illuminate\Http\Request;
 use App\Http\Requests\AtosRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\EnseignantRequest;
+use App\Http\Requests\ModifieAtosRequest;
 use App\Http\Requests\ModifieEnseignantRequest;
-use App\Models\Emploi;
-use App\Models\Fao;
-use App\Models\Fonction;
 
 class PersonnelsController extends Controller
 {
@@ -93,7 +94,7 @@ class PersonnelsController extends Controller
             $enseignant->save();
         }
         // Redirigez l'utilisateur vers une autre page
-        return redirect()->route('admin.index')->with('success', "Ajout effectuer avec succès");
+        return redirect()->route('admin.listes.personnels')->with('success', "Ajout effectuer avec succès");
 
     }
     //fin pour ajout enseignant dans le formulaire
@@ -115,13 +116,32 @@ class PersonnelsController extends Controller
         $enseignant->update($request->validated());
 
         // Mettre à jour les départements de l'enseignant
-        $enseignant->departement()->sync($request->departement);    
+        $enseignant->departement()->sync($request->departement);
+      
+        
+
+        // Gestion de la mise à jour de la photo de l'enseignant
+        if ($request->hasFile('Photo')) {
+            // Supprimer l'ancienne photo si elle existe
+            Storage::disk('public')->delete($enseignant->Photo);
+
+            // Enregistrer la nouvelle photo
+            $photoPath = $request->file('Photo')->store('enseignant', 'public');
+            $enseignant->update(['Photo' => $photoPath]);
+        }
+
 
         return redirect()->route('admin.listes.personnels')->with('success', "L'enseignant a été modifié avec succès");
 
     }
 
     public function supprimerEnseignant(Enseignant $enseignant) {
+        // Supprimer les relations avec les départements
+        $enseignant->departement()->detach();
+
+        if ($enseignant->Photo) {
+            Storage::disk('public')->delete($enseignant->Photo);
+        }
         $enseignant->delete();
         return redirect()->route('admin.listes.personnels')->with('success', "L'enseignant a été supprimer avec succès");
     }
@@ -149,10 +169,48 @@ class PersonnelsController extends Controller
             $atos->save();
         }   
         // Redirigez l'utilisateur vers une autre page
-        return redirect()->route('admin.index')->with('success', "Ajout effectuer avec succès");
+        return redirect()->route('admin.listes.personnels')->with('success', "Ajout effectuer avec succès");
             
     }
     //fin pour ajout atos dans le formulaire
+
+    public function modifieAtos(Atos $atos) {
+        return view('admin.personnel.modifier-atos', [
+            'atos' => $atos,
+            'emplois' => Emploi::pluck('Nom','id'),
+            'structure' => Structure::pluck('Nom','id'),
+            'faos' => Fao::pluck('Nom','id'),
+            'roles' => Role::pluck('Nom','id'),
+        ]);
+    }
+
+    public function modifSauveAtos(ModifieAtosRequest $request, Atos $atos) {
+        // Désactiver temporairement la vérification d'unicité pour l'email
+        $atos->update($request->validated());  
+
+        // Gestion de la mise à jour de la photo de l'enseignant
+        if ($request->hasFile('Photo')) {
+            // Supprimer l'ancienne photo si elle existe
+            Storage::disk('public')->delete($atos->Photo);
+            
+            // Enregistrer la nouvelle photo
+            $photoPath = $request->file('Photo')->store('atos', 'public');
+            $atos->update(['Photo' => $photoPath]);
+        }
+
+        return redirect()->route('admin.listes.personnels')->with('success', "L'atos a été modifié avec succès");
+
+    }
+
+    public function supprimerAtos(Atos $atos) {
+
+        if ($atos->Photo) {
+            Storage::disk('public')->delete($atos->Photo);
+        }
+
+        $atos->delete();
+        return redirect()->route('admin.listes.personnels')->with('success', "L'atos a été supprimer avec succès");
+    }
 
     public function profil() {
         return view('admin.personnel.profil');

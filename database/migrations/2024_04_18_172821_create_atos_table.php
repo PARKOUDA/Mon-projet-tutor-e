@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string("Nom");
             $table->string("Prenom");
             $table->string("Telephone");
+            $table->string("Genre");
             $table->string("Email")->unique();
-            $table->string("Mot de passe");
-            $table->string("Photo");
+            $table->string("Mot_de_passe");
+            $table->string("Photo")->nullable();
             //crée une contrainte qui ne peut être négative et crée une clé étrangère qui fait reference à l'id de la table grade
             // $table->unsignedBigInteger("grade_id"); 
             // $table->foreign("grade_id")->references("id")->on("grade"); 

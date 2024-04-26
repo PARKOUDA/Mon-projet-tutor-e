@@ -27,9 +27,10 @@ class EnseignantRequest extends FormRequest
             "Matricule" => ["required"],
             "Nom" => ["required"],
             "Prenom" => ["required"],
+            "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
             "Email" => ["required", "email", Rule::unique('enseignants')->ignore($this->id)],
-            "Mot de passe" => ['min:4'],
+            "Mot_de_passe" => ['min:4'],
             "titre_id" => ["required", 'exists:titres,id'],
             "Photo" => ['image', 'max:2000'],
             "grade_id" => ["required",'exists:grades,id'],
@@ -49,7 +50,7 @@ class EnseignantRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'Mot de passe' => Hash::make($this->{'Mot de passe'}), // Hacher le mot de passe avant la validation
+            'Mot_de_passe' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
         ]);
     }
 }

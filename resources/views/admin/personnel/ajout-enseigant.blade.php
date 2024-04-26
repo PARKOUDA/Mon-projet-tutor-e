@@ -40,17 +40,25 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <label for="" class="form-label">Mot de passe</label>
-                <input type="password" placeholder="Mot de passe" name="Mot de passe" class="form-control">
+                <input type="password" placeholder="Mot de passe" name="Mot_de_passe" class="form-control">
 
                 @error('Mot de passe')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <label for="" class="form-label">Email</label>
                 <input type="text" placeholder="Email" name="Email" class="form-control" value="{{old('Email')}}">
 
                 @error('Email')
+                    <div class="text-danger">{{$message}} </div>
+                @enderror
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="" class="form-label">Genre</label>
+                <input type="text" placeholder="Genre" name="Genre" class="form-control" value="{{old('Genre')}}">
+
+                @error('Genre')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\PersonnelsController;
 use App\Http\Controllers\admin\ServicesController;
+use App\Http\Controllers\auth\ConnexionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,9 @@ Route::delete('/admin/personnels/enseignant/{enseignant}', [PersonnelsController
 // Route de formulaire pour l'ajout d'un atos
 Route::get('/admin/personnels/ajout/atos', [PersonnelsController::class, 'ajoutAtos'])->name('admin.listes.ajout-atos');
 Route::post('/admin/personnels/ajout/atos', [PersonnelsController::class, 'sauvegardeAtos']);
+Route::get('/admin/personnels/ajout/atos/{atos}/modifier', [PersonnelsController::class, 'modifieAtos'])->name('admin.atos.modifier');
+Route::put('/admin/personnels/atos/{atos}/modifier', [PersonnelsController::class, 'modifSauveAtos'])->name('admin.atos.sauvegarde-atos');
+Route::delete('/admin/personnels/atos/{atos}', [PersonnelsController::class, 'supprimerAtos'])->name('admin.atos.supprimer');
 
 //les routes des differents services
 Route::get('/admin/departements', [ServicesController::class, 'departement'])->name('admin.services.departements');
@@ -84,3 +88,11 @@ Route::put('/admin/ufrs/{ufr}', [ServicesController::class, 'modifSauveUfr'])->n
 Route::delete('/admin/ufrs/{ufr}', [ServicesController::class, 'supprimerUfr'])->name('admin.ufr.supprimer');
 
 Route::get('/admin/profil', [PersonnelsController::class, 'profil'])->name('admin.personnel.profil');
+
+
+Route::get('/connexion/enseignant', [ConnexionController::class, 'connexionEnseignant'])->name('auth.connexion.enseignant');
+Route::post('/connexion/enseignant', [ConnexionController::class, 'verifieEnseignant']);
+
+
+
+Route::get('/connexion/atos', [ConnexionController::class, 'connexionAtos']);

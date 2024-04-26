@@ -6,18 +6,27 @@ use App\Models\Role;
 use App\Models\Titre;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Enseignant extends Model
+class Enseignant extends Authenticatable
 {
+    use HasApiTokens;
     use HasFactory;
+    use Notifiable;
+    protected $guard = 'enseignant';
+
+
     protected $fillable = [
         'Matricule',
         'Nom',
         'Prenom',
         'Telephone',
         'Email',
-        'Mot de passe',
+        'Genre',
+        'Mot_de_passe',
         'titre_id',
         'Photo',
         'grade_id',
@@ -26,6 +35,7 @@ class Enseignant extends Model
         'role_id',
         'departements',
     ];
+
     // //permet de cacher le mot de passe
     // protected $hidden = [
     //     'Mot de passe',

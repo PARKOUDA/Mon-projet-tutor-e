@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ModifieEnseignantRequest extends FormRequest
+class ModifieAtosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,14 +28,11 @@ class ModifieEnseignantRequest extends FormRequest
             "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
             "Email" => ["required", "email"],
-            "titre_id" => ["required", 'exists:titres,id'],
+            "fao_id" => ["required",'exists:faos,id'],
             "Photo" => ['image', 'max:2000'],
-            "grade_id" => ["required",'exists:grades,id'],
-            "fonction_id" => ["required", 'exists:fonctions,id'],
-            "ufr_id" => ["required", 'exists:ufrs,id'],
-            "departements" => ['array'],
-            "departements.*" => ['exists:departements,id'],
-            "role_id" => ["required", 'exists:roles,id'],
+            "structure_id" => ["required",'exists:structures,id'],
+            "emploi_id" => ["required",'exists:emplois,id'],
+            "role_id" => ["required",'exists:roles,id'],
         ];
     }
 }

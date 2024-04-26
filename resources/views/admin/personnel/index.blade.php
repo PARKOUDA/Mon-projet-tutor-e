@@ -84,7 +84,8 @@
                                                                     <tr>
                                                                         <td>
                                                                             @if ($enseignant->Photo)
-                                                                                <img src="{{$enseignant->photoUrl()}}" alt="">
+                                                                                <img src="{{ $enseignant->photoUrl() }}"
+                                                                                    alt="">
                                                                             @endif
                                                                         </td>
                                                                         <td> {{ $enseignant->Matricule }} </td>
@@ -101,12 +102,14 @@
                                                                             </a>
                                                                         </td>
                                                                         <td>
-                                                                            <a href="#"
-                                                                                class="btn btn-outline-primary invisible"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModalDetailEnseignant_{{ $enseignant->Matricule }}"
-                                                                                title="Cliquez ici pour voir les details">
-                                                                                Détail</a>
+                                                                            <form action="{{ route('admin.enseignant.supprimer', $enseignant->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('delete')
+                                                                                <button type="submit" class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12" style="color: #feffff; width: 120px">
+                                                                                    <i class="fa-sharp fa-plus" style="color: #feffff"></i>
+                                                                                    Supprimer
+                                                                                </button>
+                                                                            </form>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -129,7 +132,10 @@
                                                                                             {{ $enseignant->Prenom }}
                                                                                         </h5>
                                                                                         @if ($enseignant->Photo)
-                                                                                            <img src="{{$enseignant->photoUrl()}}" alt="" class="rounded-circle ms-5" style="width: 50px; height: 50px;">
+                                                                                            <img src="{{ $enseignant->photoUrl() }}"
+                                                                                                alt=""
+                                                                                                class="rounded-circle ms-5"
+                                                                                                style="width: 50px; height: 50px;">
                                                                                         @endif
                                                                                         <button type="button"
                                                                                             class="btn-close"
@@ -145,6 +151,14 @@
                                                                                                     Nom et prénom :
                                                                                                     <strong>{{ $enseignant->Nom }}
                                                                                                         {{ $enseignant->Prenom }}</strong>
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="">
+                                                                                                <label for="recipient-name"
+                                                                                                    class="col-form-label">
+                                                                                                    Genre :
+                                                                                                    <strong>{{ $enseignant->Genre }}</strong>
                                                                                                 </label>
                                                                                             </div>
 
@@ -229,24 +243,23 @@
                                                                                             </div>
 
                                                                                             <div class="modal-footer row">
-                                                                                                <a href="{{route('admin.enseignant.modifier', $enseignant)}}" type="submit"
+                                                                                                <a href="{{ route('admin.enseignant.modifier', $enseignant) }}"
+                                                                                                    type="submit"
                                                                                                     class="btn btn-success btn-cool col-lg-4 col-md-12 col-sm-12"
                                                                                                     style="color: #feffff; width: 120px">
                                                                                                     <i class="fa-sharp fa-plus"
                                                                                                         style="color: #feffff"></i>
                                                                                                     Modifier
                                                                                                 </a>
-                                                                                                <form action="{{route('admin.enseignant.supprimer', $enseignant)}}" method="POST">
+                                                                                                {{-- <form action="{{ route('admin.enseignant.supprimer', $enseignant->id) }}" method="POST">
                                                                                                     @csrf
                                                                                                     @method('delete')
-                                                                                                    <button type="submit" class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12"
-                                                                                                        style="color: #feffff; width: 120px">
-                                                                                                        <i class="fa-sharp fa-plus"
-                                                                                                        style="color: #feffff"></i>
-                                                                                                            Supprimer
+                                                                                                    <button type="submit" class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12" style="color: #feffff; width: 120px">
+                                                                                                        <i class="fa-sharp fa-plus" style="color: #feffff"></i>
+                                                                                                        Supprimer
                                                                                                     </button>
-                                                                                                </form>
-                                                                                                
+                                                                                                </form> --}}
+
                                                                                                 <button type="button"
                                                                                                     class="btn btn-secondary col-lg-4 col-md-12 col-sm-12"
                                                                                                     style="color: #feffff; width: 120px"
@@ -297,7 +310,8 @@
                                                                     <tr>
                                                                         <td>
                                                                             @if ($personnelAtos->Photo)
-                                                                                <img src="{{$personnelAtos->photoUrl()}}" alt="">
+                                                                                <img src="{{ $personnelAtos->photoUrl() }}"
+                                                                                    alt="">
                                                                             @endif
                                                                         </td>
                                                                         <td>{{ $personnelAtos->Matricule }} </td>
@@ -313,6 +327,21 @@
                                                                                 title="Cliquez ici pour voir les details">
                                                                                 Détail
                                                                             </a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <form
+                                                                                action="{{ route('admin.atos.supprimer', $personnelAtos) }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('delete')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12"
+                                                                                    style="color: #feffff; width: 120px">
+                                                                                    <i class="fa-sharp fa-plus"
+                                                                                        style="color: #feffff"></i>
+                                                                                    Supprimer
+                                                                                </button>
+                                                                            </form>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -335,7 +364,10 @@
                                                                                             {{ $personnelAtos->Prenom }}
 
                                                                                             @if ($personnelAtos->Photo)
-                                                                                             <img src="{{$personnelAtos->photoUrl()}}" alt="" class="rounded-circle ms-5" style="width: 50px; height: 50px;">
+                                                                                                <img src="{{ $personnelAtos->photoUrl() }}"
+                                                                                                    alt=""
+                                                                                                    class="rounded-circle ms-5"
+                                                                                                    style="width: 50px; height: 50px;">
                                                                                             @endif
                                                                                         </h5>
                                                                                         <button type="button"
@@ -353,6 +385,14 @@
                                                                                                     Nom et prénom :
                                                                                                     <strong>{{ $personnelAtos->Nom }}
                                                                                                         {{ $personnelAtos->Prenom }}</strong>
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="">
+                                                                                                <label for="recipient-name"
+                                                                                                    class="col-form-label">
+                                                                                                    Genre :
+                                                                                                    <strong>{{ $personnelAtos->Genre }}</strong>
                                                                                                 </label>
                                                                                             </div>
 
@@ -389,7 +429,8 @@
                                                                                             <div class="">
                                                                                                 <label for="recipient-name"
                                                                                                     class="col-form-label">
-                                                                                                    Fonction Administrative occupée :
+                                                                                                    Fonction Administrative
+                                                                                                    occupée :
                                                                                                     <strong>{{ $personnelAtos->fao->Nom }}</strong>
                                                                                                 </label>
                                                                                             </div>
@@ -414,20 +455,15 @@
                                                                                             </div>
 
                                                                                             <div class="modal-footer row">
-                                                                                                <button type="submit"
+                                                                                                <a href="{{ route('admin.atos.modifier', $personnelAtos) }}"
+                                                                                                    type="submit"
                                                                                                     class="btn btn-success btn-cool col-lg-4 col-md-12 col-sm-12"
                                                                                                     style="color: #feffff; width: 120px">
                                                                                                     <i class="fa-sharp fa-plus"
                                                                                                         style="color: #feffff"></i>
                                                                                                     Modifier
-                                                                                                </button>
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12"
-                                                                                                    style="color: #feffff; width: 120px">
-                                                                                                    <i class="fa-sharp fa-plus"
-                                                                                                        style="color: #feffff"></i>
-                                                                                                    Supprimer
-                                                                                                </button>
+                                                                                                </a>
+
                                                                                                 <button type="button"
                                                                                                     class="btn btn-secondary col-lg-4 col-md-12 col-sm-12"
                                                                                                     style="color: #feffff; width: 120px"
@@ -480,7 +516,8 @@
                                                                     <tr>
                                                                         <td>
                                                                             @if ($adminEnseignant->Photo)
-                                                                                <img src="{{$adminEnseignant->photoUrl()}}" alt="">
+                                                                                <img src="{{ $adminEnseignant->photoUrl() }}"
+                                                                                    alt="">
                                                                             @endif
                                                                         </td>
                                                                         <td>{{ $adminEnseignant->Matricule }} </td>
@@ -505,8 +542,9 @@
                                                                     <tr>
                                                                         <td>
                                                                             @if ($adminAtos->Photo)
-                                                                                <img src="{{$adminAtos->photoUrl()}}" alt="">
-                                                                             @endif
+                                                                                <img src="{{ $adminAtos->photoUrl() }}"
+                                                                                    alt="">
+                                                                            @endif
                                                                         </td>
                                                                         <td>{{ $adminAtos->Matricule }} </td>
                                                                         <td>{{ $adminAtos->Nom }}
@@ -543,12 +581,12 @@
                                                                                             {{ $adminEnseignant->Prenom }}
 
                                                                                             @if ($adminEnseignant->Photo)
-                                                                                             <img src="{{$adminEnseignant->photoUrl()}}" alt="" class="rounded-circle ms-5" style="width: 50px; height: 50px;">
+                                                                                                <img src="{{ $adminEnseignant->photoUrl() }}"
+                                                                                                    alt=""
+                                                                                                    class="rounded-circle ms-5"
+                                                                                                    style="width: 50px; height: 50px;">
                                                                                             @endif
                                                                                         </h5>
-                                                                                        @if ($adminEnseignant->Photo)
-                                                                                            <img src="{{$adminEnseignant->photoUrl()}}" alt="" class="rounded-circle ms-5" style="width: 50px; height: 50px;">
-                                                                                        @endif
                                                                                         <button type="button"
                                                                                             class="btn-close"
                                                                                             data-bs-dismiss="modal"
@@ -564,6 +602,14 @@
                                                                                                     Nom et prénom :
                                                                                                     <strong>{{ $adminEnseignant->Nom }}
                                                                                                         {{ $adminEnseignant->Prenom }}</strong>
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="">
+                                                                                                <label for="recipient-name"
+                                                                                                    class="col-form-label">
+                                                                                                    Genre :
+                                                                                                    <strong>{{ $adminEnseignant->Genre }}</strong>
                                                                                                 </label>
                                                                                             </div>
 
@@ -637,24 +683,10 @@
                                                                                                 </label>
                                                                                             </div>
 
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-success btn-cool col-lg-4 col-md-12 col-sm-12"
-                                                                                                    style="color: #feffff; width: 120px">
-                                                                                                    <i class="fa-sharp fa-plus"
-                                                                                                        style="color: #feffff"></i>
-                                                                                                    Modifier
-                                                                                                </button>
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12"
-                                                                                                    style="color: #feffff; width: 120px"">
-                                                                                                    <i class="fa-sharp fa-plus"
-                                                                                                        style="color: #feffff"></i>
-                                                                                                    Supprimer
-                                                                                                </button>
+                                                                                            <div class="modal-footer row">
                                                                                                 <button type="button"
                                                                                                     class="btn btn-secondary col-lg-4 col-md-12 col-sm-12"
-                                                                                                    style="color: #feffff; width: 120px""
+                                                                                                    style="color: #feffff; width: 120px"
                                                                                                     data-bs-dismiss="modal">
                                                                                                     <i class="fa-solid fa-xmark"
                                                                                                         style="color: #feffff"></i>
@@ -686,7 +718,10 @@
                                                                                             {{ $adminAtos->Prenom }}
 
                                                                                             @if ($adminAtos->Photo)
-                                                                                             <img src="{{$adminAtos->photoUrl()}}" alt="" class="rounded-circle ms-5" style="width: 50px; height: 50px;">
+                                                                                                <img src="{{ $adminAtos->photoUrl() }}"
+                                                                                                    alt=""
+                                                                                                    class="rounded-circle ms-5"
+                                                                                                    style="width: 50px; height: 50px;">
                                                                                             @endif
                                                                                         </h5>
                                                                                         <button type="button"
@@ -704,6 +739,14 @@
                                                                                                     Nom et prénom :
                                                                                                     <strong>{{ $adminAtos->Nom }}
                                                                                                         {{ $adminAtos->Prenom }}</strong>
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="">
+                                                                                                <label for="recipient-name"
+                                                                                                    class="col-form-label">
+                                                                                                    Genre :
+                                                                                                    <strong>{{ $adminAtos->Genre }}</strong>
                                                                                                 </label>
                                                                                             </div>
 
@@ -740,7 +783,8 @@
                                                                                             <div class="">
                                                                                                 <label for="recipient-name"
                                                                                                     class="col-form-label">
-                                                                                                    Fonction Administrative Occupée :
+                                                                                                    Fonction Administrative
+                                                                                                    Occupée :
                                                                                                     <strong>{{ $adminAtos->fao->Nom }}</strong>
                                                                                                 </label>
                                                                                             </div>
@@ -755,21 +799,7 @@
                                                                                                 </label>
                                                                                             </div>
 
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-success btn-cool col-lg-4 col-md-12 col-sm-12"
-                                                                                                    style="color: #feffff; width: 120px">
-                                                                                                    <i class="fa-sharp fa-plus"
-                                                                                                        style="color: #feffff"></i>
-                                                                                                    Modifier
-                                                                                                </button>
-                                                                                                <button type="submit"
-                                                                                                    class="btn btn-danger btn-cool col-lg-4 col-md-12 col-sm-12"
-                                                                                                    style="color: #feffff; width: 120px">
-                                                                                                    <i class="fa-sharp fa-plus"
-                                                                                                        style="color: #feffff"></i>
-                                                                                                    Supprimer
-                                                                                                </button>
+                                                                                            <div class="modal-footer row">
                                                                                                 <button type="button"
                                                                                                     class="btn btn-secondary col-lg-4 col-md-12 col-sm-12"
                                                                                                     style="color: #feffff; width: 120px"

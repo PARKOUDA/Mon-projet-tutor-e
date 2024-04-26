@@ -20,6 +20,13 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+            if ($guard=="enseignant" && Auth::guard($guard)->check()) {
+                if (Auth::user()->role_id == 1) {
+                    return redirect()->route('admin.index')->with('success', 'Vous êtes connecter');
+                } else {
+                    return redirect()->route('admin.personnel.profil')->with('success', 'Vous êtes connecter');
+                }
+            }
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
