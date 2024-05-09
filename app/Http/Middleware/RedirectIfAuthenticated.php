@@ -4,34 +4,32 @@ namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param     \Illuminate\Http\Request; $request
+     * @param      \Closure&nbsp; $next
+     * @param&nbsp; string|null; $guard
+     * @return mixed
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle($request, Closure $next, $guard = null)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if ($guard=="enseignant" && Auth::guard($guard)->check()) {
-                if (Auth::user()->role_id == 1) {
-                    return redirect()->route('admin.index')->with('success', 'Vous êtes connecter');
-                } else {
-                    return redirect()->route('admin.personnel.profil')->with('success', 'Vous êtes connecter');
-                }
-            }
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        if ($guard == "admin" && Auth::guard($guard)->check()) {
+            return redirect()->route('admin-index'); //name of the route to be redirected on successful admin login
         }
-
+        if ($guard == "enseignant" && Auth::guard($guard)->check()) {
+            return redirect()->route('admin-index'); //name of the route to be redirected on successful admin login
+        }
+        if ($guard == "atos" && Auth::guard($guard)->check()) {
+            return redirect()->route('admin-index'); //name of the route to be redirected on successful admin login
+        }
+        if (Auth::guard($guard)->check()) {
+            return redirect()->route('user-index'); //name of the route to be redirected on successful user login
+        }
         return $next($request);
     }
 }

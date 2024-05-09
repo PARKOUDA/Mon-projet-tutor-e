@@ -29,7 +29,7 @@ class EmploiSeeder extends Seeder
             'Nom' => 'AISU'
         ]);
         Emploi::create([
-            'Nom' => 'Instituteur certifié'
+            'Nom' => 'Instituteur/trice certifié'
         ]); Emploi::create([
             'Nom' => 'CASU'
         ]);
@@ -39,19 +39,19 @@ class EmploiSeeder extends Seeder
             'Nom' => 'Aide-bibliothécaire'
         ]);
         Emploi::create([
-            'Nom' => 'Aide mécanisien'
+            'Nom' => 'Aide mécanisien(e)'
         ]); Emploi::create([
             'Nom' => 'Chauffeur'
         ]);
         Emploi::create([
             'Nom' => 'Agent de liaison'
         ]); Emploi::create([
-            'Nom' => 'Adjoint administratif'
+            'Nom' => 'Adjoint(e) administratif'
         ]);
         Emploi::create([
-            'Nom' => 'Adjoint de secretariat'
+            'Nom' => 'Adjoint(e) de secretariat'
         ]); Emploi::create([
-            'Nom' => 'Conseiller GRH'
+            'Nom' => 'Conseiller/ière GRH'
         ]);
          Emploi::create([
             'Nom' => "Conseiller d'Orientation Scolaire et Professionnelle"
@@ -59,7 +59,7 @@ class EmploiSeeder extends Seeder
         Emploi::create([
             'Nom' => 'Administrateur civil'
         ]); Emploi::create([
-            'Nom' => "Conseiller d'Education"
+            'Nom' => "Conseiller/ière d'Education"
         ]);
         Emploi::create([
             'Nom' => "Archiviste d'Etat"
@@ -72,7 +72,7 @@ class EmploiSeeder extends Seeder
             'Nom' => 'Reprographe'
         ]);
         Emploi::create([
-            'Nom' => 'Inspecteur du Trésor'
+            'Nom' => 'Inspecteur/trice du Trésor'
         ]); Emploi::create([
             'Nom' => 'Secretaire de direction'
         ]);
@@ -89,12 +89,12 @@ class EmploiSeeder extends Seeder
         Emploi::create([
             'Nom' => 'Bibliothécaire'
         ]); Emploi::create([
-            'Nom' => 'Assistant/GRH'
+            'Nom' => 'Assistant(e)/GRH'
         ]);
         Emploi::create([
             'Nom' => 'Contrôleur du Trésor'
         ]); Emploi::create([
-            'Nom' => 'Technicien supérieur de maintenance en froid et climatisation'
+            'Nom' => 'Technicien(e) supérieur de maintenance en froid et climatisation'
         ]);
         Emploi::create([
             'Nom' => 'Plombier'
@@ -102,7 +102,7 @@ class EmploiSeeder extends Seeder
             'Nom' => 'Gestionnaire financier'
         ]);
         Emploi::create([
-            'Nom' => 'Institeur principal'
+            'Nom' => 'Institeur/trice principal'
         ]);
         Emploi::create([
             'Nom' => 'Analyste programmeur'

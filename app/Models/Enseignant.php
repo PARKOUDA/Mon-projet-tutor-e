@@ -32,8 +32,8 @@ class Enseignant extends Authenticatable
         'grade_id',
         'fonction_id',
         'ufr_id',
-        'role_id',
-        'departements',
+        'role',
+        'departement_id',
     ];
 
     // //permet de cacher le mot de passe

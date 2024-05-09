@@ -15,7 +15,7 @@ class FonctionSeeder extends Seeder
     public function run(): void
     {
         Fonction::create([
-            'Nom' => 'Coordonateur'
+            'Nom' => 'Coordonateur/trice'
             ]
         );
         Fonction::create([
@@ -23,19 +23,19 @@ class FonctionSeeder extends Seeder
             ]
         ); 
         Fonction::create([
-            'Nom' => 'Directeur'
+            'Nom' => 'Directeur/trice'
             ]
         ); 
         Fonction::create([
-            'Nom' => 'Directeur Adjoint'
+            'Nom' => 'Directeur/trice Adjoint(e)'
             ]
         ); 
         Fonction::create([
-            'Nom' => "President de l'université"
+            'Nom' => "President(e) de l'université"
             ]
         ); 
         Fonction::create([
-            'Nom' => "Vice President de l'université"
+            'Nom' => "Vice President(e) de l'université"
             ]
         ); 
         Fonction::create([

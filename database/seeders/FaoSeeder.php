@@ -41,7 +41,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'DRH'
         ]);
         Fao::create([
-            'Nom' => "Coordonnateur de l'ACM"
+            'Nom' => "Coordonnateur/trice de l'ACM"
         ]);
         Fao::create([
             'Nom' => 'Chef de la division titres et diplômes du SAOI'
@@ -77,7 +77,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'Chef de service du traitement'
         ]);
         Fao::create([
-            'Nom' => 'Directeur des Archives'
+            'Nom' => 'Directeur/trice des Archives'
         ]);
         Fao::create([
             'Nom' => 'DAF'
@@ -167,7 +167,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'Secrétaire principal/IUT'
         ]);
         Fao::create([
-            'Nom' => 'Billeteur et caissier secondaire/UFR-LSH'
+            'Nom' => 'Billeteur/trice et caissier/ière secondaire/UFR-LSH'
         ]);
     }   
 }

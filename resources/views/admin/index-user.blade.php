@@ -1,6 +1,6 @@
 @extends("admin.layouts.app")
 
-@section("titre", "Tableau de bord")
+@section("titre", "Utilisateur tableau de bord")
 
 @section("contenu")
     <!-- la partie de bienvenue -->
@@ -14,7 +14,7 @@
               <div class="d-flex justify-content-between flex-wrap">
                 <div class="d-flex align-items-end flex-wrap">
                   <div class="me-md-3 me-xl-5">
-                    <h2>Bienvenue ADMINISTRATEUR</h2>
+                    <h2>Bienvenue Utilisateur</h2>
                     <p class="mb-md-0">dans votre tableau de bord</p>
                   </div>
                   <div class="d-flex">
@@ -57,5 +57,5 @@
         </footer>
         <!-- partial -->
       </div>
-      <!-- main-panel ends -->
+      
 @endsection

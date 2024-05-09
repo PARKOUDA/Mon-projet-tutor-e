@@ -1,22 +1,22 @@
 <?php
 
-use App\Http\Controllers\admin\PersonnelsController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\ProfilController;
 use App\Http\Controllers\admin\ServicesController;
 use App\Http\Controllers\auth\ConnexionController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\PersonnelsController;
+use App\Http\Controllers\auth\AdminController;
+use App\Http\Controllers\auth\UserController;
+use App\Http\Controllers\public\AuthPublicController;
+use App\Http\Controllers\public\PublicController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/admin', [PersonnelsController::class, 'index'])->middleware(['auth:admin', 'verified'])->name('admin.index');
+Route::get('/user', [PersonnelsController::class, 'indexUser'])->name('user.index');
 
-Route::get('/admin', [PersonnelsController::class, 'index'])->name('admin.index');
+Route::middleware('guest:admin')->group(function () {
+
+
+});
 
 // Route du personnels
 Route::get('/admin/personnels', [PersonnelsController::class, 'personnels'])->name('admin.listes.personnels');
@@ -89,10 +89,39 @@ Route::delete('/admin/ufrs/{ufr}', [ServicesController::class, 'supprimerUfr'])-
 
 Route::get('/admin/profil', [PersonnelsController::class, 'profil'])->name('admin.personnel.profil');
 
-
 Route::get('/connexion/enseignant', [ConnexionController::class, 'connexionEnseignant'])->name('auth.connexion.enseignant');
 Route::post('/connexion/enseignant', [ConnexionController::class, 'verifieEnseignant']);
 
 
 
 Route::get('/connexion/atos', [ConnexionController::class, 'connexionAtos']);
+
+Route::get('/admin/profil', [PersonnelsController::class, 'profil'])->name('admin.personnel.profil');
+
+//Authentification 
+Route::get('/inscription/user', [UserController::class, 'inscriptionUser'])->name('inscription-user');
+Route::post('/inscription/user/action', [UserController::class, 'inscriptionUserAction'])->name('inscription-user-action');
+Route::get('/connexion/admin', [UserController::class, 'connexionAdmin'])->name('connexion-user');
+Route::post('/connexion/user/action', [UserController::class, 'connexionAdminAction'])->name('connexion-user-action');
+Route::post('/deconnexion',[UserController::class, 'deconnexion'])->name('deconnexion');
+
+#Public route
+Route::get('/',[PublicController::class, 'pageDacceuil'])->name('accueil');
+Route::get('/liste-des-enseignants',[PublicController::class, 'enseignantListe'])->name('liste-enseignant');
+Route::get('/liste-des-atos',[PublicController::class, 'atosListe'])->name('liste-atos');
+
+Route::get('/inscription-option',[PublicController::class, 'inscriptionOption'])->name('inscription-option');
+Route::get('/connexion-option',[PublicController::class, 'connexionOption'])->name('connexion-option');
+
+Route::get('/inscription-enseignant',[AuthPublicController::class, 'inscriptionEnseignant'])->name('inscription-enseignant');
+Route::post('/inscription-enseignant-action',[AuthPublicController::class, 'inscriptionEnseignantAction'])->name('inscription-enseignant-action');
+Route::get('/connexion-enseignant',[AuthPublicController::class, 'connexionEnseignant'])->name('connexion-enseignant');
+Route::post('/connexion-enseignant-option',[AuthPublicController::class, 'connexionEnseignantAction'])->name('connexion-enseignant-action');
+
+Route::get('/inscription-atos',[AuthPublicController::class, 'inscriptionAtos'])->name('inscription-atos');
+Route::post('/inscription-atos-action',[AuthPublicController::class, 'inscriptionAtosAction'])->name('inscription-atos-action');
+Route::get('/connexion-atos',[AuthPublicController::class, 'connexionAtos'])->name('connexion-atos');
+Route::post('/connexion-atos-option',[AuthPublicController::class, 'connexionAtosAction'])->name('connexion-atos-action');
+
+// Route::get('/inscription-user', [UserController::class, 'inscription'])->name('inscription-admin');
+// Route::post('/inscription-user/action', [UserController::class, 'inscriptionAction'])->name('inscription-admin-action');

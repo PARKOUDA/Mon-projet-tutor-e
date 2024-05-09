@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("Prenom");
             $table->string("Telephone");
             $table->string("Genre");
+            $table->string("role");
             $table->string("Email")->unique();
             $table->string("Mot_de_passe");
             $table->string("Photo")->nullable();
@@ -27,7 +28,6 @@ return new class extends Migration
             $table->foreignId("structure_id")->constrained(); 
             $table->foreignId("fao_id")->constrained(); 
             $table->foreignId("emploi_id")->constrained(); 
-            $table->foreignId("role_id")->constrained()->nullable(); 
             $table->timestamps();
         });
     }

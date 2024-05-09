@@ -14,11 +14,11 @@ class GradeSeeder extends Seeder
     public function run(): void
     {
         Grade::create([
-            'Nom' => 'Assistant'
+            'Nom' => 'Assistant(e)'
             ]
         ); 
         Grade::create([
-            'Nom' => 'Maitre assistant'
+            'Nom' => 'Maitre assistant(e)'
             ]
         ); 
         Grade::create([

@@ -20,12 +20,18 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\EnseignantRequest;
 use App\Http\Requests\ModifieAtosRequest;
 use App\Http\Requests\ModifieEnseignantRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PersonnelsController extends Controller
 {
     public function index()
     {
-        return view("admin.index");
+        return view("admin.index-admin");
+    }
+
+    public function indexUser()
+    {
+        return view("admin.index-user");
     }
 
     // la fonction permet d'afficher tout les enseignants et permet d'effectuer 
@@ -84,7 +90,7 @@ class PersonnelsController extends Controller
         $enseignant = Enseignant::create($request->validated());
 
         // Attacher les départements à l'enseignant
-        $enseignant->departement()->attach($request->departement);
+        // $enseignant->departement()->attach($request->departement);
 
         // Vérifier si une image a été soumise
         if ($request->hasFile('Photo')) {
@@ -213,6 +219,9 @@ class PersonnelsController extends Controller
     }
 
     public function profil() {
-        return view('admin.personnel.profil');
+
+        $user = Auth::user();
+        
+        return view('admin.personnel.profil', ["user" => $user]);
     }
 }

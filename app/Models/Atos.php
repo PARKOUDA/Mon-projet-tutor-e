@@ -7,12 +7,18 @@ use App\Models\Fonction;
 use Monolog\Handler\RollbarHandler;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 
-class Atos extends Model
+class Atos extends Authenticatable
 {
+    use HasApiTokens;
     use HasFactory;
+    use Notifiable;
+    protected $guard = 'atos';
+
     protected $fillable = [
         'Matricule',
         'Nom',
@@ -25,7 +31,7 @@ class Atos extends Model
         'Photo',
         'emploi_id',
         'fao_id',
-        'role_id',
+        'role',
     ];
 
     protected $table = 'atos';
