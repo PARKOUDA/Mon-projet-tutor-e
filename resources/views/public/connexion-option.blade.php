@@ -14,14 +14,14 @@
             <h3 class="text">
                Option de connexion
             </h3>
-            <form action="{{route('inscription-user-action')}}">
+            <form>
                <div class="btn">
                   <div class="inner"></div>
-                  <button><a href="" style="text-decoration: none">Enseignant</a></button>
+                  <button><a href="{{route('connexion-enseignant')}}" style="text-decoration: none">Enseignant</a></button>
                </div>
                <div class="btn">
                   <div class="inner"></div>
-                  <button><a href="" style="text-decoration: none">Atos</a></button>
+                  <button><a href="{{route('connexion-atos')}}" style="text-decoration: none">Atos</a></button>
                </div>
                <div class="signup-link">
                   Je n'ai pas de compte <a href="{{route('inscription-option')}}">S'incrire</a>

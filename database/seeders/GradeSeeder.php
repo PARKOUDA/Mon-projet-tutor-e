@@ -30,7 +30,7 @@ class GradeSeeder extends Seeder
             ]
         );
         Grade::create([
-            'Nom' => 'Aucun(e)'
+            'Nom' => 'Autre'
             ]
         );
 

@@ -35,7 +35,7 @@ class AtosRequest extends FormRequest
             "Photo" => ['image', 'max:2000'],
             "structure_id" => ["required",'exists:structures,id'],
             "emploi_id" => ["required",'exists:emplois,id'],
-            "role_id" => ["required",'exists:roles,id'],
+            "role" => ["required"],
         ];
     }
 

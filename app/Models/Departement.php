@@ -17,6 +17,6 @@ class Departement extends Model
      * @return void
      */
     public function enseignants(){
-        return $this->belongsToMany(Enseignant::class);
+        return $this->hasMany(Enseignant::class);
     }
 }

@@ -93,7 +93,7 @@
                                                                                 Nom prénom :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                SABIDANI YENTEM ELISEE
+                                                                                SAWADAGO AMIDOU
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -109,7 +109,7 @@
                                                                                 E-mail :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                elisee@gmail.com
+                                                                                amidou@gmail.com
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -167,7 +167,7 @@
                                                                         prénom</label>
                                                                     <input type="text" class="form-control"
                                                                         id="fullname" placeholder="Entrez votre nom"
-                                                                        value="SABIDANI ELISEE" />
+                                                                        value="" />
                                                                 </div>
                                                             </div>
                                                             <!--end col-->
@@ -177,7 +177,7 @@
                                                                         class="form-label">E-mail</label>
                                                                     <input type="email" class="form-control"
                                                                         id="email" placeholder="Entrez votre email"
-                                                                        value="esabidan@gmail.com" />
+                                                                        value="" />
                                                                 </div>
                                                             </div>
                                                             <!--end col-->
@@ -188,7 +188,7 @@
                                                                     <input type="text" class="form-control"
                                                                         id="telephone"
                                                                         placeholder="Entrez votre numero de telephone"
-                                                                        value="+(226) 56 78 56 67" />
+                                                                        value="" />
                                                                 </div>
                                                             </div>
                                                             <!--end col-->
@@ -197,7 +197,7 @@
                                                                     <label for="siege" class="form-label">Siège</label>
                                                                     <input type="text" class="form-control"
                                                                         id="siege" placeholder="Entrez votre siège"
-                                                                        value="Ouagadougou" />
+                                                                        value="" />
                                                                 </div>
                                                             </div>
                                                             <!--end col-->

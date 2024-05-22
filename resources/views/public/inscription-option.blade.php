@@ -24,7 +24,7 @@
               
                <div class="btn">
                   <div class="inner"></div>
-                  <button><a href="" style="text-decoration: none">Atos</a></button>
+                  <button><a href="{{ route('inscription-atos') }}" style="text-decoration: none">Atos</a></button>
                </div>
                <div class="signup-link">
                   J'ai déja un compte <a href="{{route('connexion-option')}}">Connexion</a>

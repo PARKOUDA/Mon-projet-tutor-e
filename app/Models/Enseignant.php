@@ -26,7 +26,7 @@ class Enseignant extends Authenticatable
         'Telephone',
         'Email',
         'Genre',
-        'Mot_de_passe',
+        'password',
         'titre_id',
         'Photo',
         'grade_id',
@@ -36,15 +36,25 @@ class Enseignant extends Authenticatable
         'departement_id',
     ];
 
-    // //permet de cacher le mot de passe
-    // protected $hidden = [
-    //     'Mot de passe',
-    // ];
+/**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-    //permet de masquer le mot de passe dans la base de donnée
-    // protected $casts = [
-    //     'Mot de passe' => 'hashed'
-    // ];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
     /**
      * reccupère la grade de l'enseignant
      *
@@ -75,7 +85,7 @@ class Enseignant extends Authenticatable
      * @return void
      */
     public function departement(){
-        return $this->belongsToMany(Departement::class);
+        return $this->belongsTo(Departement::class);
     }
 
      /**
@@ -100,4 +110,6 @@ class Enseignant extends Authenticatable
     public function photoUrl() {
         return Storage::url($this->Photo);
     }
+
+
 }

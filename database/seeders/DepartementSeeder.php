@@ -63,7 +63,7 @@ class DepartementSeeder extends Seeder
             'Nom' => 'CID'
         ]);
         Departement::create([
-            'Nom' => 'Aucun(e)'
+            'Nom' => 'Autre'
         ]);
     }
 }

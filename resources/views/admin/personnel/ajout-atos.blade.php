@@ -99,14 +99,14 @@
             </div>
            
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <select name="role_id" class="form-select">
+                <select name="role" class="form-select">
                     <option>Veuillez choisir un role</option>
                     @foreach ($roles as $id => $nom)
                         <option value="{{$id}}">{{$nom}}</option>
                     @endforeach
                 </select>
 
-                @error('role_id')
+                @error('role')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>

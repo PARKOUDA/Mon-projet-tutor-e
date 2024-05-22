@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('enseignants', function (Blueprint $table) {
             $table->id();
-            $table->string("Matricule");
+            $table->string("Matricule")->unique();
             $table->string("Nom");
             $table->string("Prenom");
             $table->string("Telephone");
             $table->string("Genre");
             $table->string("role")->default("user");
             $table->string("Email")->unique();
-            $table->string("Mot_de_passe");
+            $table->string("password");
             $table->string("Photo")->nullable();
             //crée une contrainte qui ne peut être négative et crée une clé étrangère qui fait reference à l'id de la table grade
             // $table->unsignedBigInteger("grade_id"); 

@@ -14,19 +14,19 @@ class UfrSeeder extends Seeder
     public function run(): void
     {
         Ufr::create([
-            'Nom' => 'ST'
+            'Nom' => 'UFR-ST'
         ]);
         Ufr::create([
-            'Nom' => 'SEG'
+            'Nom' => 'UFR-SEG'
         ]);
         Ufr::create([
-            'Nom' => 'UIT'
+            'Nom' => 'IUT'
         ]);
         Ufr::create([
-            'Nom' => 'LSH'
+            'Nom' => 'UFR-LSH'
         ]);
         Ufr::create([
-            'Nom' => 'Aucun(e)'
+            'Nom' => 'Autre'
         ]);
     }
 }

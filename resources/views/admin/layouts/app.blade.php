@@ -83,7 +83,14 @@
                     </ul>
                 @endif
 
-                @if (request()->route()->getName() == 'admin.services.departements' || request()->route()->getName() == 'admin.services.emplois' || request()->route()->getName() == 'admin.services.faos' || request()->route()->getName() == 'admin.services.fonctions' || request()->route()->getName() == 'admin.services.structures' || request()->route()->getName() == 'admin.services.grades' || request()->route()->getName() == 'admin.services.titres' || request()->route()->getName() == 'admin.services.ufrs')
+                @if (request()->route()->getName() == 'admin.services.departements' ||
+                        request()->route()->getName() == 'admin.services.emplois' ||
+                        request()->route()->getName() == 'admin.services.faos' ||
+                        request()->route()->getName() == 'admin.services.fonctions' ||
+                        request()->route()->getName() == 'admin.services.structures' ||
+                        request()->route()->getName() == 'admin.services.grades' ||
+                        request()->route()->getName() == 'admin.services.titres' ||
+                        request()->route()->getName() == 'admin.services.ufrs')
                     <ul class="navbar-nav mr-lg-4 w-100">
                         <form action="" method="get" class="w-100">
                             <li class="nav-item nav-search d-none d-lg-block w-100">
@@ -93,8 +100,9 @@
                                             <i class="mdi mdi-magnify"></i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Rechercher {{$recherche}}"
-                                        aria-label="search" aria-describedby="search" name="Recherche{{$name}}">
+                                    <input type="text" class="form-control"
+                                        placeholder="Rechercher {{ $recherche }}" aria-label="search"
+                                        aria-describedby="search" name="Recherche{{ $name }}">
                                 </div>
                             </li>
                         </form>
@@ -207,18 +215,38 @@
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                             id="profileDropdown">
                             <img src="{{ asset('assets/images/faces/face5.jpg') }}" alt="profile" />
-                            <span class="nav-profile-name">Administrateur</span>
+                            @if (auth('enseignant')->check())
+                                <span class="nav-profile-name">{{ auth('enseignant')->user()->Nom }}
+                                    {{ auth('enseignant')->user()->Prenom }}</span>
+                            @elseif (auth('atos')->check())
+                                <span class="nav-profile-name">{{ auth('atos')->user()->Nom }}
+                                    {{ auth('atos')->user()->Prenom }}</span>
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
-                                <i class="mdi mdi-settings text-primary"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item">
+                            @if (auth('enseignant')->check())
+                                <a class="dropdown-item" href="{{ route('atos.profil') }}" <i
+                                    class="mdi mdi-settings text-primary"></i>
+                                    Profil
+                                </a>
+                            @elseif (auth('atos')->check())
+                                <a class="dropdown-item" href="{{ route('enseignant.profil') }}" <i
+                                    class="mdi mdi-settings text-primary"></i>
+                                    Profil
+                                </a>
+                            @endif
+
+                            <a class="dropdown-item"
+                                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
                                 <i class="mdi mdi-logout text-primary"></i>
-                                Logout
+                                Déconnexion
                             </a>
+
+                            <form id="logout-form" action="{{ route('deconnexion') }}" method="POST">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>

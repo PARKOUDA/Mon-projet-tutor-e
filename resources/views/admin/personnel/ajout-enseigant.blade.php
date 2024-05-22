@@ -119,26 +119,32 @@
                 @enderror
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <select name="role_id" class="form-select">
+                <select name="role" class="form-select">
                     <option>Veuillez choisir un role</option>
-                    @foreach ($roles as $id => $nom)
-                        <option value="{{$id}}">{{$nom}}</option>
-                    @endforeach
+                    <option value="admin">Administrateur</option>
+                    <option value="user">Utilisateur</option>
                 </select>
 
-                @error('role_id')
+                @error('role')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <select name="departement[]" class="form-select" multiple>
+                {{-- <select name="departement_id" class="form-select" multiple>
+                    <option>Veuillez choisir un departement</option>
+                    @foreach ($departements as $id => $nom)
+                        <option value="{{$id}}">{{$nom}}</option>
+                    @endforeach
+                </select> --}}
+
+                <select name="departement_id" class="form-select">
                     <option>Veuillez choisir un departement</option>
                     @foreach ($departements as $id => $nom)
                         <option value="{{$id}}">{{$nom}}</option>
                     @endforeach
                 </select>
 
-                @error('departement')
+                @error('departement_id')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>

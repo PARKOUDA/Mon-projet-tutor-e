@@ -54,6 +54,9 @@
                 <div class="site-navigation">
                     <div class="row g-0 align-items-center">
                         <div class="col-2">
+                            
+                                {{-- <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+                           --}}
                             <a href="index.html" class="logo m-0 float-start">UNZ_GP<span
                                     class="text-primary">.</span></a>
                         </div>
@@ -98,7 +101,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="img-wrap">
-                        <img src="{{ asset('images/img-1.jpg') }}" alt="Image" class="img-fluid rounded">
+                        <img src="{{ asset('assets/images/perso.jpg') }}" alt="Image" class="img-fluid rounded">
                     </div>
                 </div>
             </div>

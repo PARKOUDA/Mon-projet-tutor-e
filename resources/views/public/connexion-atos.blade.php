@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Connexion Enseignant</title>
+    <title>Connexion Atos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}">
 
@@ -13,23 +13,22 @@
     <!-- partial:index.partial.html -->
     <div class="container">
         <div class="text">
-            Connexion Enseignant
+            Connexion Atos
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            @if($errors->has('login'))
+            <div class="alert alert-danger form-login">
+                {{ $errors->first('login') }}
+            </div>
+            @endif
         </div>
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           {{ session('success') }}
         </div>
         @endif
-        <div style="display: flex; justify-content: center;">
-            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
-            @if($errors->has('login'))
-            <div class="alert alert-danger form-login">
-            {{ $errors->first('login') }}
-            </div>
-            @endif
-        </div>
-
-        <form action="{{route('connexion-enseignant-action')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('connexion-atos-action')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-row">
                 <div class="input-data">
@@ -59,9 +58,8 @@
             <br>
             <div style="display: flex; justify-content: center;">
                 <a href="{{route('inscription-option')}}">Inscription option</a> &nbsp;
-                <a href="{{route('connexion-atos')}}">Connexion ATOS</a>
+                <a href="{{route('connexion-enseignant')}}">Connexion Enseignant</a>
             </div>
-            
         </form>
     </div>
     <!-- partial -->

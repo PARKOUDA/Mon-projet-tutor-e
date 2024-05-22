@@ -36,9 +36,8 @@ class EnseignantRequest extends FormRequest
             "grade_id" => ["required",'exists:grades,id'],
             "fonction_id" => ["required", 'exists:fonctions,id'],
             "ufr_id" => ["required", 'exists:ufrs,id'],
-            "departements" => ['array'],
-            "departements.*" => ['exists:departements,id'],
-            "role_id" => ["required", 'exists:roles,id'],
+            "departement_id" => ["required", 'exists:departements,id'],
+            "role" => ["required"],
         ];
     }
 

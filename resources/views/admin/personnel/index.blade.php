@@ -215,9 +215,7 @@
                                                                                                     class="col-form-label">
                                                                                                     Departement :
                                                                                                     <strong>
-                                                                                                        @foreach ($enseignant->departement as $departement)
-                                                                                                            {{ $departement->Nom }}.
-                                                                                                        @endforeach
+                                                                                                            {{ $enseignant->departement->Nom }}.
                                                                                                     </strong>
                                                                                                 </label>
                                                                                             </div>
@@ -227,7 +225,7 @@
                                                                                                     class="col-form-label">
                                                                                                     Role :
                                                                                                     <strong>
-                                                                                                        {{ $enseignant->role->Nom }}
+                                                                                                        {{ $enseignant->role }}
                                                                                                     </strong>
                                                                                                 </label>
                                                                                             </div>
@@ -439,7 +437,7 @@
                                                                                                     class="col-form-label">
                                                                                                     Role :
                                                                                                     <strong>
-                                                                                                        {{ $personnelAtos->role->Nom }}
+                                                                                                        {{ $personnelAtos->role }}
                                                                                                     </strong>
                                                                                                 </label>
                                                                                             </div>
@@ -666,9 +664,7 @@
                                                                                                     class="col-form-label">
                                                                                                     Departement :
                                                                                                     <strong>
-                                                                                                        @foreach ($adminEnseignant->departement as $departement)
-                                                                                                            {{ $departement->Nom }}.
-                                                                                                        @endforeach
+                                                                                                            {{ $adminEnseignant->departement->Nom }}.
                                                                                                     </strong>
                                                                                                 </label>
                                                                                             </div>

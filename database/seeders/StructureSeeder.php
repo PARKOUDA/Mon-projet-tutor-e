@@ -23,31 +23,34 @@ class StructureSeeder extends Seeder
             'Nom' => 'BCM'
         ]);
         Structure::create([
-            'Nom' => 'DCA'
+            'Nom' => 'La direction centrale des archives (DCA)'
         ]);
         Structure::create([
-            'Nom' => 'DEP'
+            'Nom' => 'La direction des études et de la planification(DEP)'
         ]);
         Structure::create([
-            'Nom' => 'DPU'
+            'Nom' => 'La direction de la presse universitaire (DPU)'
         ]);
         Structure::create([
-            'Nom' => 'LU'
+            'Nom' => 'La librairie universitaire (LU)'
         ]);
         Structure::create([
             'Nom' => 'RM'
         ]);
         Structure::create([
-            'Nom' => 'DRH'
+            'Nom' => 'La direction des ressources humaines (DRH)'
         ]);
         Structure::create([
-            'Nom' => 'ACM'
+            'Nom' => "L'atélier central de maintenance (ACM)"
         ]);
         Structure::create([
-            'Nom' => 'DAF'
+            'Nom' => "La direction de l'administration des finances (DAF)"
         ]);
         Structure::create([
             'Nom' => 'DSCDVS'
+        ]);
+        Structure::create([
+            'Nom' => 'La bibliothèque universitaire centrale (B.U.C)'
         ]);
         Structure::create([
             'Nom' => 'BUO'
@@ -89,9 +92,6 @@ class StructureSeeder extends Seeder
             'Nom' => 'DFPCR'
         ]);
         Structure::create([
-            'Nom' => 'DSCDVS'
-        ]);
-        Structure::create([
             'Nom' => 'UFR-ST'
         ]);
         Structure::create([
@@ -102,6 +102,9 @@ class StructureSeeder extends Seeder
         ]);
         Structure::create([
             'Nom' => 'IUT'
+        ]);
+        Structure::create([
+            'Nom' => 'Autre'
         ]);
     }
 }

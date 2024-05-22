@@ -113,5 +113,8 @@ class EmploiSeeder extends Seeder
         Emploi::create([
             'Nom' => 'PCLC'
         ]);
+        Emploi::create([
+            'Nom' => 'Autre'
+        ]);
     }
 }

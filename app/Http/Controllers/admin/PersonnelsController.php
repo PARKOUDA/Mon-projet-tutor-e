@@ -29,9 +29,21 @@ class PersonnelsController extends Controller
         return view("admin.index-admin");
     }
 
-    public function indexUser()
+    public function profilEnseignant()
     {
-        return view("admin.index-user");
+        return view("profil.enseignant");
+    }
+
+    public function profilAtos()
+    {
+        return view("profil.atos");
+    }
+
+    public function profil() {
+
+        $user = Auth::user();
+        
+        return view('admin.personnel.profil', ["user" => $user]);
     }
 
     // la fonction permet d'afficher tout les enseignants et permet d'effectuer 
@@ -56,8 +68,8 @@ class PersonnelsController extends Controller
 
         // la fonction permet d'afficher tout les adminsEnseignants et adminsAtos en effectuant
         
-        $adminsEnseignants = Enseignant::where('role_id', 1)->get();
-        $adminsAtos = Atos::where('role_id', 1)->get();
+        $adminsEnseignants = Enseignant::all();
+        $adminsAtos = Atos::all();
         return view("admin.personnel.index", [
             'enseignants' => $enseignants->paginate(10, '*', 'pageEnseignant'),
             'personnelsAtos' => $personnelsAtos->paginate(10, '*', 'pageAtos'),
@@ -122,7 +134,7 @@ class PersonnelsController extends Controller
         $enseignant->update($request->validated());
 
         // Mettre à jour les départements de l'enseignant
-        $enseignant->departement()->sync($request->departement);
+       // $enseignant->departement()->sync($request->departement);
       
         
 
@@ -143,7 +155,7 @@ class PersonnelsController extends Controller
 
     public function supprimerEnseignant(Enseignant $enseignant) {
         // Supprimer les relations avec les départements
-        $enseignant->departement()->detach();
+        // $enseignant->departement()->detach();
 
         if ($enseignant->Photo) {
             Storage::disk('public')->delete($enseignant->Photo);
@@ -218,10 +230,4 @@ class PersonnelsController extends Controller
         return redirect()->route('admin.listes.personnels')->with('success', "L'atos a été supprimer avec succès");
     }
 
-    public function profil() {
-
-        $user = Auth::user();
-        
-        return view('admin.personnel.profil', ["user" => $user]);
-    }
 }
