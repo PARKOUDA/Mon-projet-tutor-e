@@ -19,6 +19,14 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthPublicController extends Controller
 {
+    public function getDepartements($ufr_id)
+    {
+        // Récupérer les départements associés à l'UFR sélectionnée
+        $departements = Departement::where('ufr_id', $ufr_id)->get();
+
+        return response()->json(['departements' => $departements]);
+    }
+
     public function inscriptionEnseignant()
     {
         $titres = Titre::all();
@@ -166,31 +174,6 @@ class AuthPublicController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        // $credentials = $request->validate([
-        //     'Matricule' => 'required',
-        //     'Nom' => 'required',
-        //     'Prenom' => 'required',
-        //     'Telephone' => 'required',
-        //     'Email' => 'required|email',
-        //     'Genre' => 'required',
-        //     'Mot_de_passe' => 'required',
-        //     'structure_id' => 'required',
-        //     'Photo' => 'required',
-        //     'emploi_id' => 'required',
-        //     'fao_id' => 'required',
-        //     'role' => 'required',
-        // ]);
-
-        // if (Auth::guard('atos')->attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     return redirect()->intended(route('admin.index'));
-        // }
-
-        // return back()->withErrors([
-        //     'email' => "Ce email n'ai pas correct ou n'existe pas.",
-        // ]);
 
         $atos = Atos::create([
             'Email' => $request->Email,

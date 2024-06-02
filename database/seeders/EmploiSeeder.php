@@ -18,20 +18,20 @@ class EmploiSeeder extends Seeder
             'Nom' => 'Attaché de direction'
         ]);
         Emploi::create([
-            'Nom' => 'CISU'
+            'Nom' => "Conseillier d'Intendance Scolaire et Universitaire (CISU)"
         ]);
         Emploi::create([
-            'Nom' => 'AASU'
+            'Nom' => "Attachée d'Administration Scolaire et Universitaire (AASU)"
         ]);
         Emploi::create([
             'Nom' => 'Agent de liaison'
         ]); Emploi::create([
-            'Nom' => 'AISU'
+            'Nom' => " Attachée d'Intendance Scolaire et Universitaire (AISU)"
         ]);
         Emploi::create([
             'Nom' => 'Instituteur/trice certifié'
         ]); Emploi::create([
-            'Nom' => 'CASU'
+            'Nom' => "Conseillier d'Administration Scolaire et Universitaire (CASU)"
         ]);
         Emploi::create([
             'Nom' => 'IEPD'
@@ -82,7 +82,7 @@ class EmploiSeeder extends Seeder
             'Nom' => 'Aide électricien'
         ]);
         Emploi::create([
-            'Nom' => 'Ingén des trav informatique'
+            'Nom' => 'Ingénière des travaux informatique'
         ]); Emploi::create([
             'Nom' => 'Menuisier'
         ]);

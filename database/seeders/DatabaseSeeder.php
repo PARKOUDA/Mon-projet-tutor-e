@@ -32,13 +32,13 @@ class DatabaseSeeder extends Seeder
             
             EmploiSeeder::class,
             FonctionSeeder::class,
+            UfrSeeder::class,
             DepartementSeeder::class,
             FaoSeeder::class,
             GradeSeeder::class,
             RoleSeeder::class,
             StructureSeeder::class,
             TitreSeeder::class,
-            UfrSeeder::class,
          ]);
     }
 }

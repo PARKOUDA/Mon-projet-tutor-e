@@ -59,9 +59,11 @@
                         </div>
                         <div class="col-8 text-center ">
                             <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                                <li class="active"><a href="{{ route('accueil') }}">Accueil</a></li>
-                                <li><a href="{{ route('liste-enseignant') }}">Enseignants</a></li>
-                                <li><a href="{{ route('liste-atos') }}">Atos</a></li>
+                                <li class="{{ request()->routeIs('accueil') ? 'active' : '' }}"><a href="{{ route('accueil') }}">Accueil</a></li>
+                                <li class="{{ request()->routeIs('liste-enseignant') ? 'active' : '' }}"><a href="{{ route('liste-enseignant') }}">Enseignants</a></li>
+                                <li class="{{ request()->routeIs('liste-atos') ? 'active' : '' }}"><a href="{{ route('liste-atos') }}">Atos</a></li>
+                                <li class="{{ request()->routeIs('inscription-option') ? 'active' : '' }}"><a href="{{ route('inscription-option') }}">Inscription</a></li>
+                                <li class="{{ request()->routeIs('accuconnexion-optioneil') ? 'active' : '' }}"><a href="{{ route('connexion-option') }}">Connexion</a></li>
                             </ul>
                         </div>
                         <div class="col-2 text-end">
@@ -96,104 +98,51 @@
     <div class="section sec-news">
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="card post-entry">
-                        <a href="single.html"><img src="{{ asset('images/img-1.jpg') }}" class="card-img-top"
-                                alt="Image"></a>
-                        <div class="card-body">
-                            <div><span class="text-uppercase font-weight-bold date">Jan 20, 2021</span></div>
-                            <h5 class="card-title"><a href="single.html">Behind the word mountains</a></h5>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                            <p class="mt-5 mb-0"><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card post-entry">
-                        <a href="single.html"><img src="{{ asset('images/img-2.jpg') }}" class="card-img-top"
-                                alt="Image"></a>
-                        <div class="card-body">
-                            <div><span class="text-uppercase font-weight-bold date">Jan 20, 2021</span></div>
-                            <h5 class="card-title"><a href="single.html">Behind the word mountains</a></h5>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                            <p class="mt-5 mb-0"><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card post-entry">
-                        <a href="single.html"><img src="{{ asset('images/img-3.jpg') }}" class="card-img-top"
-                                alt="Image"></a>
-                        <div class="card-body">
-                            <div><span class="text-uppercase font-weight-bold date">Jan 20, 2021</span></div>
-                            <h5 class="card-title"><a href="single.html">Behind the word mountains</a></h5>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                            <p class="mt-5 mb-0"><a href="single.html">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="card post-entry">
-                        <a href="single.html"><img src="{{ asset('images/img-1.jpg') }}" class="card-img-top"
-                                alt="Image"></a>
-                        <div class="card-body">
-                            <div><span class="text-uppercase font-weight-bold date">Jan 20, 2021</span></div>
-                            <h5 class="card-title"><a href="single.html">Behind the word mountains</a></h5>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                            <p class="mt-5 mb-0"><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card post-entry">
-                        <a href="single.html"><img src="{{ asset('images/img-2.jpg') }}" class="card-img-top"
-                                alt="Image"></a>
-                        <div class="card-body">
-                            <div><span class="text-uppercase font-weight-bold date">Jan 20, 2021</span></div>
-                            <h5 class="card-title"><a href="single.html">Behind the word mountains</a></h5>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                            <p class="mt-5 mb-0"><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card post-entry">
-                        <a href="single.html"><img src="{{ asset('images/img-3.jpg') }}" class="card-img-top"
-                                alt="Image"></a>
-                        <div class="card-body">
-                            <div><span class="text-uppercase font-weight-bold date">Jan 20, 2021</span></div>
-                            <h5 class="card-title"><a href="single.html">Behind the word mountains</a></h5>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts. </p>
-                            <p class="mt-5 mb-0"><a href="single.html">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-
-
+            <div class="d-flex justify-content-between mt-2 mb-5">
+                <h2 class="fs-10">PERSONNEL <strong>ENSEIGNANT</strong></h2>
+                <ul class="navbar-nav mr-lg-4">
+                    <form action="" method="get" class="w-100">
+                        <li class="nav-item nav-search d-none d-lg-block w-100">
+                            <div class="input-group gap-2">
+                                <input type="text" class="form-control" placeholder="Rechercher un enseignant"
+                                    aria-label="search" aria-describedby="search"
+                                    name="recherche_personnel_enseignant" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                                </div>
+                            </div>
+                        </li>
+                    </form>
+                </ul>
             </div>
-
+            <div class="row">
+                @foreach ($personnels as $personnel)
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0">
+                        <div class="card post-entry">
+                            <a href="#"><img src="{{ asset('images/img-placeholder.jpg') }}" class="card-img-top"
+                                    alt="Image"></a>
+                            <div class="card-body">
+                                {{-- <div><span class="text-uppercase font-weight-bold date">{{ $personnel->created_at->format('M d, Y') }}</span></div> --}}
+                                <h5 class="card-title">{{ $personnel->Nom }} {{ $personnel->Prenom }}</h5>
+                                <p><strong>Matricule : </strong> {{ $personnel->Matricule }}</p>
+                                <p><strong>Sexe : </strong>{{ $personnel->Genre }}</p>
+                                <p><strong>Telephone : </strong> {{ $personnel->Telephone }}</p>
+                                <p><strong>Email : </strong>{{ $personnel->Email }}</p>
+                                <p><strong>URF : </strong>{{ $personnel->ufr->Nom }}</p>
+                                <p><strong>Département : </strong>{{ $personnel->departement->Nom }}</p>
+                                <p><strong>Fonction : </strong>{{ $personnel->fonction->Nom }}</p>
+                                <p><strong>Titre : </strong>{{ $personnel->titre->Nom }}</p>
+                                <p><strong>Grade : </strong>{{ $personnel->grade->Nom }}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
             <div class="row">
                 <div class="col-lg-12 text-center py-5">
                     <div class="custom-navigation">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <span>...</span>
-                        <a href="#">5</a>
-                        </nav>
+                        {{ $personnels->links() }}
                     </div>
                 </div>
             </div>
@@ -205,8 +154,9 @@
                     <div class="col-lg-4">
                         <div class="widget">
                             <h3>À propos</h3>
-                            <p>Optimisation de la gestion des informations du personnel universitaire pour une sécurité renforcée des données. </p>
-    
+                            <p>Optimisation de la gestion des informations du personnel universitaire pour une sécurité
+                                renforcée des données. </p>
+
                         </div> <!-- /.widget -->
                         <div class="widget">
                             <address>Adresse de l'Université, <br> Koudougou</address>
@@ -244,7 +194,7 @@
                                 <li><a href="#">A propos</a></li>
                                 <li><a href="#">Contacter nous</a></li>
                             </ul>
-    
+
                             <h3>Social</h3>
                             <ul class="list-unstyled social">
                                 <li><a href="#"><span class="icon-instagram"></span></a></li>
@@ -257,7 +207,7 @@
                         </div> <!-- /.widget -->
                     </div> <!-- /.col-lg-4 -->
                 </div> <!-- /.row -->
-    
+
                 <div class="row mt-5">
                     <div class="col-12 text-center">
                         <!--
@@ -266,18 +216,18 @@
                       Please don't remove this copyright link unless you buy the license here https://untree.co/license/
                       **==========
                     -->
-    
+
                         <p>Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script>.Tous droits réservés. &mdash; Gestion du personnel de l'UNZ 
+                            </script>.Tous droits réservés. &mdash; Gestion du personnel de l'UNZ
                             <!-- License information: https://untree.co/license/ -->
                         </p>
                     </div>
                 </div>
             </div> <!-- /.container -->
         </div> <!-- /.site-footer -->
-    
+
         <!-- Preloader -->
         <div id="overlayer"></div>
         <div class="loader">
@@ -285,20 +235,19 @@
                 <span class="visually-hidden">Chargement...</span>
             </div>
         </div>
+    </div>
+
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/tiny-slider.js') }}"></script>
+
+    <script src="{{ asset('js/flatpickr.min.js') }}"></script>
 
 
-
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('js/tiny-slider.js') }}"></script>
-
-        <script src="{{ asset('js/flatpickr.min.js') }}"></script>
-
-
-        <script src="{{ asset('js/aos.js') }}"></script>
-        <script src="{{ asset('js/glightbox.min.js') }}"></script>
-        <script src="{{ asset('js/navbar.js') }}"></script>
-        <script src="{{ asset('js/counter.js') }}"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('js/navbar.js') }}"></script>
+    <script src="{{ asset('js/counter.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 
 </html>

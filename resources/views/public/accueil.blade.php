@@ -38,7 +38,7 @@
 </head>
 
 <body>
-
+    
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close">
@@ -47,26 +47,29 @@
         </div>
         <div class="site-mobile-menu-body"></div>
     </div>
-
     <nav class="site-nav">
         <div class="container">
             <div class="menu-bg-wrap">
                 <div class="site-navigation">
                     <div class="row g-0 align-items-center">
-                        <div class="col-2">
+                        {{-- <div class="text-white">
+                            <h2>Système de gestion du personnel de l'université Norbert ZONGO</h2>
                             
-                                {{-- <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
-                           --}}
+                        </div> --}}
+                        <div class="col-2">
+                            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+                        </div>
+                        <div class="col-2">
                             <a href="index.html" class="logo m-0 float-start">UNZ_GP<span
                                     class="text-primary">.</span></a>
                         </div>
-                        <div class="col-8 text-center ">
+                        <div class="col-6 text-center ">
                             <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                                <li class="active"><a href="{{ route('accueil') }}">Accueil</a></li>
-                                <li><a href="{{ route('liste-enseignant') }}">Enseignants</a></li>
-                                <li><a href="{{ route('liste-atos') }}">Atos</a></li>
-                                <li><a href="{{ route('inscription-option') }}">Inscription</a></li>
-                                <li><a href="{{ route('connexion-option') }}">Connexion</a></li>
+                                <li class="{{ request()->routeIs('accueil') ? 'active' : '' }}"><a href="{{ route('accueil') }}">Accueil</a></li>
+                                <li class="{{ request()->routeIs('liste-enseignant') ? 'active' : '' }}"><a href="{{ route('liste-enseignant') }}">Enseignants</a></li>
+                                <li class="{{ request()->routeIs('liste-atos') ? 'active' : '' }}"><a href="{{ route('liste-atos') }}">Atos</a></li>
+                                <li class="{{ request()->routeIs('inscription-option') ? 'active' : '' }}"><a href="{{ route('inscription-option') }}">Inscription</a></li>
+                                <li class="{{ request()->routeIs('accuconnexion-optioneil') ? 'active' : '' }}"><a href="{{ route('connexion-option') }}">Connexion</a></li>
                             </ul>
                         </div>
                         <div class="col-2 text-end">
@@ -91,7 +94,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-between pt-5">
                 <div class="col-lg-6 text-center text-lg-start pe-lg-5">
-                    <h1 class="heading text-white mb-3" data-aos="fade-up">Gestion du personnel de l'UNZ.</h1>
+                    <h1 class="heading text-white mb-3" data-aos="fade-up">Gestion du personnel de l'Université Norbert ZONGO.</h1>
                     <p class="text-white mb-5" data-aos="fade-up" data-aos-delay="100">Optimisation de la gestion des informations du personnel universitaire pour une sécurité renforcée des données.</p>
                     <div class="align-items-center mb-5 mm" data-aos="fade-up" data-aos-delay="200">
                         <a href="contact.html" class="btn btn-outline-white-reverse me-4">Contacter nous</a>
@@ -107,6 +110,7 @@
             </div>
         </div>
     </div>
+
     <div class="section sec-features">
         <div class="container">
             <div class="row g-5">
@@ -149,8 +153,6 @@
             </div>
         </div>
     </div>
-
-
     </div>
 
     <div class="site-footer">

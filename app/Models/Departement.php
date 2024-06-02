@@ -19,4 +19,9 @@ class Departement extends Model
     public function enseignants(){
         return $this->hasMany(Enseignant::class);
     }
+
+    public function ufr()
+    {
+        return $this->belongsTo(Ufr::class);
+    }
 }

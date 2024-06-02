@@ -215,6 +215,41 @@
         </form>
     </div>
     <!-- partial -->
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sélection du champ de sélection de l'UFR
+        var ufrSelect = document.querySelector('select[name="ufr_id"]');
+
+        // Écoute de l'événement de changement sur le champ de sélection de l'UFR
+        ufrSelect.addEventListener('change', function() {
+            var ufrId = this.value;
+
+            // Envoi d'une requête AJAX au serveur pour récupérer les départements associés à l'UFR sélectionnée
+            axios.get('/get-departements/' + ufrId)
+                .then(function(response) {
+                    var departements = response.data.departements;
+                    var departementSelect = document.querySelector('select[name="departement_id"]');
+
+                    // Effacement des options existantes
+                    departementSelect.innerHTML = '';
+
+                    // Ajout des nouvelles options basées sur les départements récupérés
+                    departements.forEach(function(departement) {
+                        var option = document.createElement('option');
+                        option.value = departement.id;
+                        option.text = departement.Nom;
+                        departementSelect.appendChild(option);
+                    });
+                })
+                .catch(function(error) {
+                    console.error('Une erreur s\'est produite :', error);
+                });
+        });
+    });
+</script>
 
 </body>
 

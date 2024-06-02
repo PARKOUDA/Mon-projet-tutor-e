@@ -18,7 +18,7 @@ Route::post('/connexion/user/action', [UserController::class, 'connexionAdminAct
 Route::post('/deconnexion',[UserController::class, 'deconnexion'])->name('deconnexion');
 
 #Public route
-Route::get('/',[PublicController::class, 'pageDacceuil'])->name('accueil');
+Route::get('/',[PublicController::class, 'pageDaccueil'])->name('accueil');
 Route::get('/liste-des-enseignants',[PublicController::class, 'enseignantListe'])->name('liste-enseignant');
 Route::get('/liste-des-atos',[PublicController::class, 'atosListe'])->name('liste-atos');
 
@@ -34,7 +34,7 @@ Route::get('/inscription-atos',[AuthPublicController::class, 'inscriptionAtos'])
 Route::post('/inscription-atos-action',[AuthPublicController::class, 'inscriptionAtosAction'])->name('inscription-atos-action');
 Route::get('/connexion-atos',[AuthPublicController::class, 'connexionAtos'])->name('connexion-atos');
 Route::post('/connexion-atos-option',[AuthPublicController::class, 'connexionAtosAction'])->name('connexion-atos-action');
-
+Route::get('/get-departements/{ufr_id}', [AuthPublicController::class, 'getDepartements']);
 
 // Route::get('/inscription-user', [UserController::class, 'inscription'])->name('inscription-admin');
 // Route::post('/inscription-user/action', [UserController::class, 'inscriptionAction'])->name('inscription-admin-action');

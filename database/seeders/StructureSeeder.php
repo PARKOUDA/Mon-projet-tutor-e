@@ -14,13 +14,19 @@ class StructureSeeder extends Seeder
     public function run(): void
     {
         Structure::create([
+            'Nom' => "Le Conseil d'Administration (CA)"
+        ]); 
+        Structure::create([
+            'Nom' => 'Le Conseil de la Formation et dele Vie universitaire (CFVU) '
+        ]); 
+        Structure::create([
+            'Nom' => 'Le Conseil Scientifique (CS)'
+        ]); 
+        Structure::create([
             'Nom' => 'Présidence'
         ]);
         Structure::create([
-            'Nom' => 'BED'
-        ]); 
-        Structure::create([
-            'Nom' => 'BCM'
+            'Nom' => "La Cellule Interne d'Assurance Qualité (CAIQ)"
         ]);
         Structure::create([
             'Nom' => 'La direction centrale des archives (DCA)'
@@ -35,9 +41,6 @@ class StructureSeeder extends Seeder
             'Nom' => 'La librairie universitaire (LU)'
         ]);
         Structure::create([
-            'Nom' => 'RM'
-        ]);
-        Structure::create([
             'Nom' => 'La direction des ressources humaines (DRH)'
         ]);
         Structure::create([
@@ -47,61 +50,63 @@ class StructureSeeder extends Seeder
             'Nom' => "La direction de l'administration des finances (DAF)"
         ]);
         Structure::create([
-            'Nom' => 'DSCDVS'
+            'Nom' => "La direction de la recherche scientifique et de la promotion de 
+            l'expertise universitaire (DRSEU)"
         ]);
         Structure::create([
             'Nom' => 'La bibliothèque universitaire centrale (B.U.C)'
         ]);
         Structure::create([
-            'Nom' => 'BUO'
+            'Nom' => 'La direction des études de la planification(DEP)'
         ]);
         Structure::create([
             'Nom' => 'ED-LACOASH'
         ]);
         Structure::create([
-            'Nom' => 'ED-ST'
+            'Nom' => 'Ecole doctoral de ST (ED-ST)'
         ]);
         Structure::create([
-            'Nom' => 'DRE'
+            'Nom' => 'Les direction des écoles doctorales (DED)'
         ]);
         Structure::create([
-            'Nom' => 'DED'
+            'Nom' => 'La direction de la coopérations universitaire (DCU)'
         ]);
         Structure::create([
-            'Nom' => 'DCU'
+            'Nom' => 'La direction de la promotion des enseignants et des relations
+            avec le CAMES (DPE/CAMES)'
         ]);
         Structure::create([
-            'Nom' => 'DPE'
+            'Nom' => 'La direction des services informatiques (DSI)'
         ]);
         Structure::create([
-            'Nom' => 'DSI'
+            'Nom' => 'Le centre de pédagogie universitaire (CPU)'
         ]);
         Structure::create([
-            'Nom' => 'CPU'
+            'Nom' => "La direction des affaires académiques,
+             de l'orientation et de l'informatique (DAOI)"
         ]);
         Structure::create([
-            'Nom' => 'DAOI'
+            'Nom' => 'La direction des sports, de la culture, du dialogue et de
+             la vie sociale (DSCDVS)'
         ]);
         Structure::create([
-            'Nom' => 'DSCDVS'
+            'Nom' => 'La direction des innovations pédagogiques (DIP)'
         ]);
         Structure::create([
-            'Nom' => 'DIP'
+            'Nom' => 'La direction de la formation professionnelle et continue, et des 
+            relations avec des entreprises (DFPCRE)'
         ]);
         Structure::create([
-            'Nom' => 'DFPCR'
+            'Nom' => 'Unité de Formation et de Recherche en Science et Technologique(UFR-ST)'
         ]);
         Structure::create([
-            'Nom' => 'UFR-ST'
+            'Nom' => 'Unité de Formation et de Recherche en Science Economique et Gestion(UFR-SEG)'
         ]);
         Structure::create([
-            'Nom' => 'UFR-SEG'
+            'Nom' => 'Unité de Formation et de Recherche en Lettre et Science Humaine(UFR-LSH)'
         ]);
         Structure::create([
-            'Nom' => 'UFR-LSH'
-        ]);
-        Structure::create([
-            'Nom' => 'IUT'
+            'Nom' => 'Institut Universitaire et Technique (IUT)'
         ]);
         Structure::create([
             'Nom' => 'Autre'

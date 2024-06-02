@@ -35,7 +35,15 @@ class FonctionSeeder extends Seeder
             ]
         ); 
         Fonction::create([
-            'Nom' => "Vice President(e) de l'université"
+            'Nom' => "Vice President(e) des enseignements et innovations pédagogiques"
+            ]
+        ); 
+        Fonction::create([
+            'Nom' => "Vice President(e) de la recherche et de la coopération internationale"
+            ]
+        ); 
+        Fonction::create([
+            'Nom' => "Vice President(e) de la professionnalisation et des relations université-entreprise"
             ]
         ); 
         Fonction::create([
@@ -43,8 +51,8 @@ class FonctionSeeder extends Seeder
             ]
         ); 
         Fonction::create([
-            'Nom' => 'aucun(e)'
+            'Nom' => 'Autre'
             ]
-        ); 
+        );
     }
 }

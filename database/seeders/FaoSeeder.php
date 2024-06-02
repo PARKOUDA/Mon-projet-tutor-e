@@ -47,19 +47,19 @@ class FaoSeeder extends Seeder
             'Nom' => 'Chef de la division titres et diplômes du SAOI'
         ]);
         Fao::create([
-            'Nom' => 'SP'
+            'Nom' => 'Sécretaire Principale (SP)'
         ]);
         Fao::create([
-            'Nom' => 'SG'
+            'Nom' => 'Sécretaire Général (SG)'
         ]);
         Fao::create([
-            'Nom' => 'CSAF'
+            'Nom' => 'Chef des Services des Affaires Financières (CSAF)'
         ]);
         Fao::create([
             'Nom' => 'Chef de service des stage'
         ]);
         Fao::create([
-            'Nom' => 'CSAF/LSH'
+            'Nom' => 'Chef des Services des Affaires Financières de LSH (CSAF/LSH)'
         ]);
         Fao::create([
             'Nom' => "Chef de service de la scolarité de l'UFR/ST"
@@ -80,7 +80,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'Directeur/trice des Archives'
         ]);
         Fao::create([
-            'Nom' => 'DAF'
+            'Nom' => 'Directeur des Administrations Financieres (DAF)'
         ]);
         Fao::create([
             'Nom' => 'Agent comptable'
@@ -128,16 +128,16 @@ class FaoSeeder extends Seeder
             'Nom' => 'Chef de service magasin'
         ]);
         Fao::create([
-            'Nom' => 'CSAF/IUT'
+            'Nom' => 'Chef des Services des Affaires Financières de IUT (CSAF/IUT)'
         ]);
         Fao::create([
-            'Nom' => 'PRM'
+            'Nom' => '(PRM)'
         ]);
         Fao::create([
             'Nom' => 'Chef de service scolarité de ED-LACOSHS et ED-ST'
         ]);
         Fao::create([
-            'Nom' => 'DSI'
+            'Nom' => 'Directeur des Services Informatiques (DSI)'
         ]);
         Fao::create([
             'Nom' => 'Chef de service informatique'
@@ -149,7 +149,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'Responsable/Protocole/Cabinet'
         ]);
         Fao::create([
-            'Nom' => 'CSAF/Central'
+            'Nom' => 'Chef de Service des Affaires Financières central (CSAF/Central)'
         ]);
         Fao::create([
             'Nom' => 'Chef de service de la recette ; Caissière principale'
@@ -168,6 +168,9 @@ class FaoSeeder extends Seeder
         ]);
         Fao::create([
             'Nom' => 'Billeteur/trice et caissier/ière secondaire/UFR-LSH'
+        ]);
+        Fao::create([
+            'Nom' => 'Autre'
         ]);
     }   
 }

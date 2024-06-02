@@ -19,4 +19,9 @@ class Ufr extends Model
     public function enseignants(){
         return $this->hasMany(Enseignant::class);
     }
+
+    public function departements()
+    {
+        return $this->hasMany(Departement::class);
+    }
 }
