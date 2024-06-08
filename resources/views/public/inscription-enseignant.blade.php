@@ -22,7 +22,9 @@
         </div>
         @endif
         <div style="display: flex; justify-content: center;">
-            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            <a href="/">
+                <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            </a>
         </div>
         @if($errors->has('login'))
         <div class="alert alert-danger form-login">
@@ -132,6 +134,34 @@
                     <span class="text-danger">{{  $errors->first('grade_id') }}</span>
                     @endif
                 </div>
+            </div>
+
+            <div class="photo" style="">
+                <label for="fileInput">Votre photo ici</label>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="file" name="Photo" id="fileInput" 
+                     accept=".jpg, .jpeg, .png" />
+                    <div class="underline"></div>
+                    @if ($errors->has('Photo'))
+                    <span class="text-danger">{{  $errors->first('Photo') }}</span>
+                    @endif
+                </div>
+            </div>
+            
+            <div class="form-row">
+                {{-- <div class="input-data">
+                    <select name="role" required>
+                        <option value="" disabled selected hidden></option>
+                        <option value="user" selected>Utilisateur</option>
+                    </select>
+                    <div class="underline"></div>
+                    <label for="">Rôle</label>
+                    @if ($errors->has('role'))
+                    <span class="text-danger">{{  $errors->first('role') }}</span>
+                    @endif
+                </div> --}}
                 <div class="input-data">
                     <select name="fonction_id" required >
                         <option value="" disabled selected hidden>Selectionnez votre fonction</option>
@@ -145,21 +175,6 @@
                     <span class="text-danger">{{  $errors->first('fonction_id') }}</span>
                     @endif
                 </div>
-            </div>
-
-            <div class="form-row">
-                <div class="input-data">
-                    <input type="file" name="Photo" id="fileInput" 
-                     accept=".jpg, .jpeg, .png" />
-                    <div class="underline"></div>
-                    @if ($errors->has('Photo'))
-                    <span class="text-danger">{{  $errors->first('Photo') }}</span>
-                    @endif
-                    {{-- <label for="fileInput">Sélectionnez une photo</label> --}}
-                </div>
-            </div>
-            
-            <div class="form-row">
                 <div class="input-data">
                     <select name="ufr_id" required>
                         <option value="" disabled selected hidden>Selectionnez votre ufr</option>
@@ -171,17 +186,6 @@
                     {{-- <label for="">Ufr/Institut</label> --}}
                     @if ($errors->has('ufr_id'))
                     <span class="text-danger">{{  $errors->first('ufr_id') }}</span>
-                    @endif
-                </div>
-                <div class="input-data">
-                    <select name="role" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="user" selected>Utilisateur</option>
-                    </select>
-                    <div class="underline"></div>
-                    <label for="">Rôle</label>
-                    @if ($errors->has('role'))
-                    <span class="text-danger">{{  $errors->first('role') }}</span>
                     @endif
                 </div>
             </div>

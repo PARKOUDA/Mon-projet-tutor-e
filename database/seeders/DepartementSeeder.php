@@ -32,6 +32,8 @@ class DepartementSeeder extends Seeder
         Departement::create(['Nom' => 'Finance Comptabilité', 'ufr_id' => $ufrSeg]);
         Departement::create(['Nom' => 'Génie Civil (GC)', 'ufr_id' => $iut]);
         Departement::create(['Nom' => 'Génie Electrique (GE)', 'ufr_id' => $iut]);
+        Departement::create(['Nom' => 'Markéting et Gestion Commerciale (MGC)', 'ufr_id' => $iut]);
+        Departement::create(['Nom' => 'Management des Entreprises Touristique et Gestion Hôtelière(MET-GH)', 'ufr_id' => $iut]);
         Departement::create(['Nom' => 'Lettre moderne (LM)', 'ufr_id' => $ufrLsh]);
         Departement::create(['Nom' => 'PHILOSOPHIE', 'ufr_id' => $ufrLsh]);
         Departement::create(['Nom' => 'GEOGRAPHIE', 'ufr_id' => $ufrLsh]);

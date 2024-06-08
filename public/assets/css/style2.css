@@ -183,3 +183,8 @@ form .form-row .textarea{
 .text-danger{
   color: #ff4747;
 }
+
+.photo{
+  display: flex;
+  padding-left: 20px;
+}

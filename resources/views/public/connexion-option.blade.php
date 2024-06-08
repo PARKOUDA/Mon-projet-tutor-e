@@ -11,8 +11,13 @@
       <div class="center">
          <input type="checkbox" id="show">
          <div class="container">
+            <div style="display: flex; justify-content: center;">
+               <a href="/">
+                   <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+               </a>
+           </div>
             <h3 class="text">
-               Option de connexion
+                  Option de connexion
             </h3>
             <form>
                <div class="btn">

@@ -239,6 +239,8 @@
                                             </div>
                                             <!--end row-->
                                         @endif
+                            {{ $currentUser }}
+                                        
 
                                         @if (auth()->user()->role == 'enseignant')
                                             <div class="row">

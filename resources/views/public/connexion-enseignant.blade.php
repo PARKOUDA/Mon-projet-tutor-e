@@ -21,7 +21,9 @@
         </div>
         @endif
         <div style="display: flex; justify-content: center;">
-            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            <a href="/">
+                <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            </a>
             @if($errors->has('login'))
             <div class="alert alert-danger form-login">
             {{ $errors->first('login') }}

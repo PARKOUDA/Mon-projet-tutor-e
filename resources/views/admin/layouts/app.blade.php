@@ -147,8 +147,13 @@
                             </a>
                             <a class="dropdown-item">
                                 <div class="item-thumbnail">
-                                    <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
-                                        class="profile-pic" />
+                                    @if (auth('enseignant')->user()->Photo == '')
+                                        <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
+                                            class="profile-pic" />
+                                    @else
+                                        <img src="{{ asset('storage/' . auth('enseignant')->user()->Photo) }}"
+                                            alt="image" class="profile-pic">
+                                    @endif
                                 </div>
                                 <div class="item-content flex-grow">
                                     <h6 class="ellipsis font-weight-normal">Johnson</h6>
@@ -214,11 +219,25 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                             id="profileDropdown">
-                            <img src="{{ asset('assets/images/faces/face5.jpg') }}" alt="profile" />
+                            {{-- <img src="{{ asset('assets/images/faces/face5.jpg') }}" alt="profile" /> --}}
                             @if (auth('enseignant')->check())
+                                @if (auth('enseignant')->user()->Photo == '')
+                                    <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
+                                        class="profile-pic" />
+                                @else
+                                    <img src="{{ asset('storage/' . auth('enseignant')->user()->Photo) }}"
+                                        alt="image" class="profile-pic"/>
+                                @endif
                                 <span class="nav-profile-name">{{ auth('enseignant')->user()->Nom }}
                                     {{ auth('enseignant')->user()->Prenom }}</span>
                             @elseif (auth('atos')->check())
+                                @if (auth('atos')->user()->Photo == '')
+                                    <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
+                                        class="profile-pic" />
+                                @else
+                                    <img src="{{ asset('storage/' . auth('atos')->user()->Photo) }}" alt="image"
+                                        class="profile-pic"/>
+                                @endif
                                 <span class="nav-profile-name">{{ auth('atos')->user()->Nom }}
                                     {{ auth('atos')->user()->Prenom }}</span>
                             @endif

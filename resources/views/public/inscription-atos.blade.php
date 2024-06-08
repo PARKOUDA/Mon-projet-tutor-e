@@ -16,7 +16,9 @@
             Inscription Atos
         </div>
         <div style="display: flex; justify-content: center;">
-            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            <a href="/">
+                <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+            </a>
         </div>
         <form action="{{route('inscription-atos-action')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -148,7 +150,7 @@
                     <span class="text-danger">{{  $errors->first('fao_id') }}</span>
                     @endif
                 </div>
-                <div class="input-data">
+                {{-- <div class="input-data">
                     <select name="role" required>
                         <option value="" disabled selected hidden></option>
                         <option value="user" selected>Utilisateur</option>
@@ -158,7 +160,7 @@
                     @if ($errors->has('role'))
                     <span class="text-danger">{{  $errors->first('role') }}</span>
                     @endif
-                </div>
+                </div> --}}
             </div>
             <div style="display: flex; justify-content: center;">
                 <button class="submit" style="background-color: #3498db; padding: 10px; border-radius: 10px; border:none; color:white; cursor: pointer; font-size:15px">Je m'inscris</button>

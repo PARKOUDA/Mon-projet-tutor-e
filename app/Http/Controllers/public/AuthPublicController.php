@@ -15,6 +15,7 @@ use App\Models\Titre;
 use App\Models\Ufr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AuthPublicController extends Controller
@@ -58,7 +59,7 @@ class AuthPublicController extends Controller
                 'Telephone' => 'required',
                 'Genre' => 'required',
                 'titre_id' => 'required',
-                // 'Photo' => 'required',
+                'Photo' => 'required',
                 'grade_id' => 'required',
                 'fonction_id' => 'required',
                 'ufr_id' => 'required',
@@ -90,24 +91,30 @@ class AuthPublicController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+        
+        $enseignant = new Enseignant();
+        $enseignant->Email = $request->Email;
+        $enseignant->Matricule = $request->Matricule;
+        $enseignant->Nom = $request->Nom;
+        $enseignant->Prenom = $request->Prenom;
+        $enseignant->Telephone = $request->Telephone;
+        $enseignant->Genre = $request->Genre;
+        $enseignant->password = $request->Mot_de_passe;
+        $enseignant->titre_id = $request->titre_id;
+        $enseignant->grade_id = $request->grade_id;
+        $enseignant->fonction_id = $request->fonction_id;
+        $enseignant->ufr_id = $request->ufr_id;
+        $enseignant->departement_id = $request->departement_id;
 
-        // dd($request->all());
+        if ($request->hasFile('Photo')) {
+            $file = $request->file('Photo');
+            $path = $file->store('photos', 'public');
+            if ($enseignant->Photo) {
+                Storage::disk('public')->delete($enseignant->Photo);
+            }
+            $enseignant->Photo = $path;
+        }
 
-        $enseignant = Enseignant::create([
-            'Email' => $request->Email,
-            'Matricule' => $request->Matricule,
-            'Nom' => $request->Nom,
-            'Prenom' => $request->Prenom,
-            'Telephone' => $request->Telephone,
-            'Genre' => $request->Genre,
-            'password' => $request->Mot_de_passe,
-            'titre_id' => $request->titre_id,
-            'Photo' => $request->Photo,
-            'grade_id' => $request->grade_id,
-            'fonction_id' => $request->fonction_id,
-            'ufr_id' => $request->ufr_id,
-            'departement_id' => $request->departement_id,
-        ]);
 
         $enseignant->save();
 
@@ -175,19 +182,26 @@ class AuthPublicController extends Controller
                 ->withInput();
         }
 
-        $atos = Atos::create([
-            'Email' => $request->Email,
-            'Matricule' => $request->Matricule,
-            'Nom' => $request->Nom,
-            'Prenom' => $request->Prenom,
-            'Telephone' => $request->Telephone,
-            'Genre' => $request->Genre,
-            'password' => $request->Mot_de_passe,
-            'structure_id' => $request->structure_id,
-            'Photo' => $request->Photo,
-            'emploi_id' => $request->emploi_id,
-            'fao_id' => $request->fao_id,
-        ]);
+            $atos = new Atos();
+            $atos->Email = $request->Email;
+            $atos->Matricule = $request->Matricule;
+            $atos->Nom = $request->Nom;
+            $atos->Prenom = $request->Prenom;
+            $atos->Telephone = $request->Telephone;
+            $atos->Genre = $request->Genre;
+            $atos->password = $request->Mot_de_passe;
+            $atos->structure_id = $request->structure_id;
+            $atos->emploi_id = $request->emploi_id;
+            $atos->fao_id = $request->fao_id;
+
+        if ($request->hasFile('Photo')) {
+            $file = $request->file('Photo');
+            $path = $file->store('photos', 'public');
+            if ($atos->Photo) {
+                Storage::disk('public')->delete($atos->Photo);
+            }
+            $atos->Photo = $path;
+        }
 
         $atos->save();
 

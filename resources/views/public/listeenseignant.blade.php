@@ -119,8 +119,15 @@
                 @foreach ($personnels as $personnel)
                     <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0">
                         <div class="card post-entry">
-                            <a href="#"><img src="{{ asset('images/img-placeholder.jpg') }}" class="card-img-top"
-                                    alt="Image"></a>
+                            <a href="#">
+                                @if ($personnel->Photo == '')
+                                <img src="{{ asset('storage/' . $personnel->Photo) }}" class="card-img-top"
+                                    alt="Image">
+                                @else
+                                <img src="{{asset('assets/images/logo-unz.jpg')}}" class="card-img-top"
+                                    alt="Image">
+                                @endif
+                            </a>
                             <div class="card-body">
                                 {{-- <div><span class="text-uppercase font-weight-bold date">{{ $personnel->created_at->format('M d, Y') }}</span></div> --}}
                                 <h5 class="card-title">{{ $personnel->Nom }} {{ $personnel->Prenom }}</h5>
@@ -128,12 +135,11 @@
                                 <p><strong>Sexe : </strong>{{ $personnel->Genre }}</p>
                                 <p><strong>Telephone : </strong> {{ $personnel->Telephone }}</p>
                                 <p><strong>Email : </strong>{{ $personnel->Email }}</p>
-                                <p><strong>URF : </strong>{{ $personnel->ufr->Nom }}</p>
-                                <p><strong>Département : </strong>{{ $personnel->departement->Nom }}</p>
-                                <p><strong>Fonction : </strong>{{ $personnel->fonction->Nom }}</p>
                                 <p><strong>Titre : </strong>{{ $personnel->titre->Nom }}</p>
                                 <p><strong>Grade : </strong>{{ $personnel->grade->Nom }}</p>
-                                
+                                <p><strong>UFR : </strong>{{ $personnel->ufr->Nom }}</p>
+                                <p><strong>Département : </strong>{{ $personnel->departement->Nom }}</p>
+                                <p><strong>Fonction : </strong>{{ $personnel->fonction->Nom }}</p>
                             </div>
                         </div>
                     </div>

@@ -119,8 +119,15 @@
                 @foreach ($personnels as $personnel)
                     <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="0">
                         <div class="card post-entry">
-                            <a href="#"><img src="{{ asset('images/img-placeholder.jpg') }}" class="card-img-top"
-                                    alt="Image"></a>
+                            <a href="#">
+                                @if ($personnel->Photo == '')
+                                <img src="{{asset('assets/images/logo-unz.jpg')}}" class="card-img-top"
+                                    alt="Image"/>
+                                @else
+                                <img src="{{ asset('storage/' . $personnel->Photo) }}" class="card-img-top"
+                                    alt="Image"/>
+                                @endif
+                            </a>
                             <div class="card-body">
                                 {{-- <div><span class="text-uppercase font-weight-bold date">{{ $personnel->created_at->format('M d, Y') }}</span></div> --}}
                                 <h5 class="card-title">{{ $personnel->Nom }} {{ $personnel->Prenom }}</h5>
@@ -129,8 +136,8 @@
                                 <p><strong>Telephone : </strong> {{ $personnel->Telephone }}</p>
                                 <p><strong>Email : </strong>{{ $personnel->Email }}</p>
                                 <p><strong>Structure : </strong>{{ $personnel->structure->Nom }}</p>
-                                <p><strong>FAO : </strong>{{ $personnel->fao->Nom }}</p>
                                 <p><strong>Emploie : </strong>{{ $personnel->emploi->Nom }}</p>
+                                <p><strong>Fontion : </strong>{{ $personnel->fao->Nom }}</p>
                             </div>
                         </div>
                     </div>

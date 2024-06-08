@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <!--end col-->
-
+                            {{ $currentUser }}
                             <!--end col-->
                         </div>
                         <!--end row-->
@@ -233,9 +233,8 @@
                                                 <!--end col-->
                                             </div>
                                             <!--end row-->
-                                        @endif
+                                        @endif --}}
 
-                                        @if (auth()->user()->role == 'enseignant')
                                             <div class="row">
                                                 <div class="col-xxl-7">
                                                     <div class="card">
@@ -248,8 +247,8 @@
                                                                                 Nom prénom :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->nom }}
-                                                                                {{ auth()->user()->prenom }}
+                                                                                {{ auth('enseignant')->user()->nom }}
+                                                                                {{ auth('enseignant')->user()->prenom }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -257,7 +256,7 @@
                                                                                 Mobile :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                +(226) {{ auth()->user()->telephone }}
+                                                                                +(226) {{ auth('enseignant')->user()->telephone }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -265,7 +264,7 @@
                                                                                 E-mail :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->email }}
+                                                                                {{ auth('enseignant')->user()->email }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -273,23 +272,23 @@
                                                                                 Adresse :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->adresse }}
+                                                                                {{ auth('enseignant')->user()->adresse }}
                                                                             </td>
                                                                         </tr>
-                                                                        <tr>
+                                                                        {{-- <tr>
                                                                             <th class="ps-0" scope="row">
                                                                                 Préférences :
                                                                             </th>
                                                                             <td class="text-muted">
                                                                                 {{ auth()->user()->preferences }}
                                                                             </td>
-                                                                        </tr>
+                                                                        </tr> --}}
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
                                                                                 Date d'inscription
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->created_at }}
+                                                                                {{ auth('enseignant')->user()->created_at }}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -304,7 +303,6 @@
                                                 <!--end col-->
                                             </div>
                                             <!--end row-->
-                                        @endif --}}
 
                                     </div>
                                     <div class="tab-pane fade" id="activities" role="tabpanel">
