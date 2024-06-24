@@ -54,10 +54,13 @@
                 <div class="site-navigation">
                     <div class="row g-0 align-items-center">
                         <div class="col-2">
+                            <img src="{{asset('assets/images/UNZ LOGO.png')}}" alt="logo de unz" width="100px">
+                        </div>
+                        <div class="col-2">
                             <a href="index.html" class="logo m-0 float-start">UNZ GP<span
                                     class="text-primary">.</span></a>
                         </div>
-                        <div class="col-8 text-center ">
+                        <div class="col-6 text-center ">
                             <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
                                 <li class="{{ request()->routeIs('accueil') ? 'active' : '' }}"><a href="{{ route('accueil') }}">Accueil</a></li>
                                 <li class="{{ request()->routeIs('liste-enseignant') ? 'active' : '' }}"><a href="{{ route('liste-enseignant') }}">Enseignants</a></li>
@@ -121,20 +124,24 @@
                         <div class="card post-entry">
                             <a href="#">
                                 @if ($personnel->Photo == '')
-                                <img src="{{ asset('storage/' . $personnel->Photo) }}" class="card-img-top"
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{asset('assets/images/inconnue.png')}}" class="card-img-top"
                                     alt="Image">
+                                </div>
                                 @else
-                                <img src="{{asset('assets/images/logo-unz.jpg')}}" class="card-img-top"
-                                    alt="Image">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('storage/' . $personnel->Photo) }}" class="card-img-top"
+                                    alt="Image"/>
+                                </div>
                                 @endif
                             </a>
                             <div class="card-body">
                                 {{-- <div><span class="text-uppercase font-weight-bold date">{{ $personnel->created_at->format('M d, Y') }}</span></div> --}}
                                 <h5 class="card-title">{{ $personnel->Nom }} {{ $personnel->Prenom }}</h5>
-                                <p><strong>Matricule : </strong> {{ $personnel->Matricule }}</p>
+                                {{-- <p><strong>Matricule : </strong> {{ $personnel->Matricule }}</p>
                                 <p><strong>Sexe : </strong>{{ $personnel->Genre }}</p>
                                 <p><strong>Telephone : </strong> {{ $personnel->Telephone }}</p>
-                                <p><strong>Email : </strong>{{ $personnel->Email }}</p>
+                                <p><strong>Email : </strong>{{ $personnel->Email }}</p> --}}
                                 <p><strong>Titre : </strong>{{ $personnel->titre->Nom }}</p>
                                 <p><strong>Grade : </strong>{{ $personnel->grade->Nom }}</p>
                                 <p><strong>UFR : </strong>{{ $personnel->ufr->Nom }}</p>

@@ -29,6 +29,13 @@
             {{ $errors->first('login') }}
             </div>
             @endif
+        </div><br><br>
+
+        <div style="text-align: center;font-weight: bold; font-size: 30px;">
+            Bienvenue
+        </div><br><br>
+        <div style="text-align:center;font-size: 24px;">
+            Veuillez vous connecter pour continue
         </div>
 
         <form action="{{route('connexion-enseignant-action')}}" method="POST" enctype="multipart/form-data">

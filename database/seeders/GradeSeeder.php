@@ -18,11 +18,11 @@ class GradeSeeder extends Seeder
             ]
         ); 
         Grade::create([
-            'Nom' => 'Maitre assistant(e)'
+            'Nom' => 'Maître assistant(e)'
             ]
         ); 
         Grade::create([
-            'Nom' => 'Maitre de conference'
+            'Nom' => 'Maître de conferences'
             ]
         ); 
         Grade::create([

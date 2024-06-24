@@ -52,18 +52,17 @@ class AuthPublicController extends Controller
             $request->all(),
             [
                 'Email' => 'required|email|max:255|unique:users',
-                'Mot_de_passe' => 'required|min:4',
+                'Mot_de_passe' => 'required|min:4|confirmed',
                 'Matricule' => 'required',
                 'Nom' => 'required',
                 'Prenom' => 'required',
                 'Telephone' => 'required',
                 'Genre' => 'required',
                 'titre_id' => 'required',
-                'Photo' => 'required',
+                'Photo' => 'nullable|image|mimes:jpeg,png,jpg|max:3072', // Photo is optional, must be an image, only jpeg, png, jpg and max size of 3MB
                 'grade_id' => 'required',
                 'fonction_id' => 'required',
                 'ufr_id' => 'required',
-                'role' => 'required',
                 'departement_id' => 'required',
             ],
             [
@@ -83,6 +82,10 @@ class AuthPublicController extends Controller
                 'Email.unique' => 'Cette adresse email est déjà utilisée.',
                 'Mot_de_passe.required' => 'Le champ mot de passe est requis.',
                 'Mot_de_passe.min' => 'Le mot de passe doit contenir au moins :min caractères.',
+                'Mot_de_passe.confirmed' => 'Le mot de passe doit être identique.',
+                'Photo.image' => 'Le champ Photo doit être une image.',
+                'Photo.mimes' => 'Le champ Photo doit être un fichier de type: jpeg, png, jpg.',
+                'Photo.max' => 'Le champ Photo ne doit pas dépasser 3 Mo.',
             ]
         );
 
@@ -99,12 +102,17 @@ class AuthPublicController extends Controller
         $enseignant->Prenom = $request->Prenom;
         $enseignant->Telephone = $request->Telephone;
         $enseignant->Genre = $request->Genre;
-        $enseignant->password = $request->Mot_de_passe;
+        //$enseignant->password = $request->Mot_de_passe;
         $enseignant->titre_id = $request->titre_id;
         $enseignant->grade_id = $request->grade_id;
         $enseignant->fonction_id = $request->fonction_id;
         $enseignant->ufr_id = $request->ufr_id;
         $enseignant->departement_id = $request->departement_id;
+
+        // Update the password only if a new password is provided
+    if ($request->filled('Mot_de_passe')) {
+        $enseignant->password = bcrypt($request->Mot_de_passe);
+    }
 
         if ($request->hasFile('Photo')) {
             $file = $request->file('Photo');
@@ -146,17 +154,16 @@ class AuthPublicController extends Controller
             $request->all(),
             [
                 'Email' => 'required|email|max:255|unique:users',
-                'Mot_de_passe' => 'required|min:4',
+                'Mot_de_passe' => 'required|min:4|confirmed',
                 'Matricule' => 'required',
                 'Nom' => 'required',
                 'Prenom' => 'required',
                 'Telephone' => 'required',
                 'Genre' => 'required',
                 'structure_id' => 'required',
-                // 'Photo' => 'required',
                 'emploi_id' => 'required',
                 'fao_id' => 'required',
-                'role' => 'required',
+                'Photo' => 'nullable|image|mimes:jpeg,png,jpg|max:3072', // Photo is optional, must be an image, only jpeg, png, jpg and max size of 3MB
             ],
             [
                 'Matricule.required' => 'Le champ Matricule est requis.',
@@ -170,11 +177,21 @@ class AuthPublicController extends Controller
                 'Email.required' => 'Le champ email est requis.',
                 'Email.email' => 'Veuillez entrer une adresse email valide.',
                 'Email.max' => 'L\'adresse email ne doit pas dépasser :max caractères.',
-                'Email.unique' => 'Cette adresse email est déjà utilisée.',
-                'Mot_de_passe.required' => 'Le champ mot de passe est requis.',
+                'Email.unique' => 'Cette adresse email est déjà utilisée.','Mot_de_passe.required' => 'Le champ mot de passe est requis.',
                 'Mot_de_passe.min' => 'Le mot de passe doit contenir au moins :min caractères.',
+                'Mot_de_passe.confirmed' => 'Le mot de passe doit être identique.',
+                'Photo.image' => 'Le champ Photo doit être une image.',
+                'Photo.mimes' => 'Le champ Photo doit être un fichier de type: jpeg, png, jpg.',
+                'Photo.max' => 'Le champ Photo ne doit pas dépasser 3 Mo.',
             ]
         );
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
 
         if ($validator->fails()) {
             return redirect()->back()
@@ -189,10 +206,15 @@ class AuthPublicController extends Controller
             $atos->Prenom = $request->Prenom;
             $atos->Telephone = $request->Telephone;
             $atos->Genre = $request->Genre;
-            $atos->password = $request->Mot_de_passe;
+            //$atos->password = $request->Mot_de_passe;
             $atos->structure_id = $request->structure_id;
             $atos->emploi_id = $request->emploi_id;
             $atos->fao_id = $request->fao_id;
+
+                // Update the password only if a new password is provided
+        if ($request->filled('Mot_de_passe')) {
+            $atos->password = bcrypt($request->Mot_de_passe);
+        }
 
         if ($request->hasFile('Photo')) {
             $file = $request->file('Photo');

@@ -57,7 +57,7 @@
                             
                         </div> --}}
                         <div class="col-2">
-                            <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
+                            <img src="{{asset('assets/images/UNZ LOGO.png')}}" alt="logo de unz" width="100px">
                         </div>
                         <div class="col-2">
                             <a href="index.html" class="logo m-0 float-start">UNZ_GP<span
@@ -69,7 +69,7 @@
                                 <li class="{{ request()->routeIs('liste-enseignant') ? 'active' : '' }}"><a href="{{ route('liste-enseignant') }}">Enseignants</a></li>
                                 <li class="{{ request()->routeIs('liste-atos') ? 'active' : '' }}"><a href="{{ route('liste-atos') }}">Atos</a></li>
                                 <li class="{{ request()->routeIs('inscription-option') ? 'active' : '' }}"><a href="{{ route('inscription-option') }}">Inscription</a></li>
-                                <li class="{{ request()->routeIs('accuconnexion-optioneil') ? 'active' : '' }}"><a href="{{ route('connexion-option') }}">Connexion</a></li>
+                                <li class="{{ request()->routeIs('accueilconnexion-option') ? 'active' : '' }}"><a href="{{ route('connexion-option') }}">Connexion</a></li>
                             </ul>
                         </div>
                         <div class="col-2 text-end">
@@ -95,12 +95,15 @@
             <div class="row align-items-center justify-content-between pt-5">
                 <div class="col-lg-6 text-center text-lg-start pe-lg-5">
                     <h1 class="heading text-white mb-3" data-aos="fade-up">Gestion du personnel de l'Université Norbert ZONGO.</h1>
-                    <p class="text-white mb-5" data-aos="fade-up" data-aos-delay="100">Optimisation de la gestion des informations du personnel universitaire pour une sécurité renforcée des données.</p>
+                    <p class="text-white mb-5" data-aos="fade-up" data-aos-delay="100">Optimisation de la gestion des informations du personnel universitaire pour une collection garantie de stockage des données.</p>
                     <div class="align-items-center mb-5 mm" data-aos="fade-up" data-aos-delay="200">
-                        <a href="contact.html" class="btn btn-outline-white-reverse me-4">Contacter nous</a>
-                        <a href="https://www.youtube.com/watch?v=Mb1zrW_zra4" class="text-white glightbox">Regarder la 
-                            video</a>
+                        <a href="{{ route('connexion-option') }}" class="btn btn-outline-white-reverse me-4">Connexion</a>
+                        <a href="{{ route('inscription-option') }}" class="text-white">Inscription</a>
                     </div>
+                    {{-- <div class="align-items-center mb-5 mm" data-aos="fade-up" data-aos-delay="200">
+                        <a href="contact.html" class="btn btn-outline-white-reverse me-4">Contacter nous</a>
+                        <a href="https://www.youtube.com/watch?v=Mb1zrW_zra4" class="text-white glightbox">Regarder la video</a>
+                    </div> --}}
                 </div>
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="img-wrap">

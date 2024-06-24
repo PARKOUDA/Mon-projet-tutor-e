@@ -127,7 +127,9 @@ Route::get('/get-departements/{ufr_id}', [AuthPublicController::class, 'getDepar
     
     Route::get('/admin/profil', [PersonnelsController::class, 'profil'])->name('admin.personnel.profil');
     Route::get('/enseignant/profil', [PersonnelsController::class, 'profilEnseignant'])->name('enseignant.profil');
+    Route::post('/enseignant/profil/action', [PersonnelsController::class, 'profilEnseignantAction'])->name('enseignant.profil.action');
     Route::get('/atos/profil', [PersonnelsController::class, 'profilAtos'])->name('atos.profil');
+    Route::post('/atos/profil/action', [PersonnelsController::class, 'profilAtosAction'])->name('atos.profil.action');
     
    
 // });

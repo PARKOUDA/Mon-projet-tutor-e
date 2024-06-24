@@ -510,24 +510,24 @@
                                                             </thead>
                                                             <tbody>
                                                                 {{-- reccuper les details d'un adminEnseignant  --}}
-                                                                @foreach ($adminsEnseignants as $adminEnseignant)
+                                                                @foreach ($adminsEnseignants as $adminPersonnel)
                                                                     <tr>
                                                                         <td>
-                                                                            @if ($adminEnseignant->Photo)
-                                                                                <img src="{{ $adminEnseignant->photoUrl() }}"
+                                                                            @if ($adminPersonnel->Photo)
+                                                                                <img src="{{ $adminPersonnel->photoUrl() }}"
                                                                                     alt="">
                                                                             @endif
                                                                         </td>
-                                                                        <td>{{ $adminEnseignant->Matricule }} </td>
-                                                                        <td>{{ $adminEnseignant->Nom }}
-                                                                            {{ $adminEnseignant->Prenom }}</td>
-                                                                        <td>{{ $adminEnseignant->Telephone }} </td>
+                                                                        <td>{{ $adminPersonnel->Matricule }} </td>
+                                                                        <td>{{ $adminPersonnel->Nom }}
+                                                                            {{ $adminPersonnel->Prenom }}</td>
+                                                                        <td>{{ $adminPersonnel->Telephone }} </td>
 
                                                                         <td>
                                                                             <a href="#"
                                                                                 class="btn btn-outline-primary"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModalDetailAdminEnseignant_{{ $adminEnseignant->Matricule }}"
+                                                                                data-bs-target="#exampleModalDetailAdminEnseignant_{{ $adminPersonnel->Matricule }}"
                                                                                 title="Cliquez ici pour voir les details">
                                                                                 Détail
                                                                             </a>
@@ -562,7 +562,7 @@
                                                                 @endforeach
                                                                 {{-- reccuper les details d'un adminEnseignant lorsqu'on clic sur le button detail --}}
                                                                 <div>
-                                                                    @foreach ($adminsEnseignants as $adminEnseignant)
+                                                                    @foreach ($enseignants as $adminEnseignant)
                                                                         <div class="modal fade"
                                                                             id="exampleModalDetailAdminEnseignant_{{ $adminEnseignant->Matricule }}"
                                                                             tabindex="-1"
@@ -574,7 +574,7 @@
                                                                                         <h5 class="modal-title"
                                                                                             id="exampleModalLabel"
                                                                                             style="color: blue">
-                                                                                            Detail de AdminEnseignant
+                                                                                            Detail
                                                                                             {{ $adminEnseignant->Nom }}
                                                                                             {{ $adminEnseignant->Prenom }}
 
@@ -697,7 +697,7 @@
                                                                         </div>
                                                                     @endforeach
                                                                     {{-- reccuper les details d'un adminAtos lorsqu'on clic sur le button detail --}}
-                                                                    @foreach ($adminsAtos as $adminAtos)
+                                                                    @foreach ($personnelsAtos as $adminAtos)
                                                                         <div class="modal fade"
                                                                             id="exampleModalDetailAdminAtos_{{ $adminAtos->Matricule }}"
                                                                             tabindex="-1"
@@ -709,7 +709,7 @@
                                                                                         <h5 class="modal-title"
                                                                                             id="exampleModalLabel"
                                                                                             style="color: blue">
-                                                                                            Detail AdminAtos
+                                                                                            Detail 
                                                                                             {{ $adminAtos->Nom }}
                                                                                             {{ $adminAtos->Prenom }}
 

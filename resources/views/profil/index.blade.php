@@ -180,10 +180,11 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
-                                                                                Nom :
+                                                                                Nom prénom :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->nom }}
+                                                                                {{ auth('atos')->user()->Nom }}
+                                                                                {{ auth('atos')->user()->Prenom }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -191,7 +192,7 @@
                                                                                 Mobile :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                +(226) {{ auth()->user()->telephone }}
+                                                                                +(226) {{ auth('atos')->user()->Telephone }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -199,31 +200,64 @@
                                                                                 E-mail :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->email }}
+                                                                                {{ auth('atos')->user()->Email }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
-                                                                                Adresse :
+                                                                                Genre :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->adresse }}
+                                                                                {{ auth('atos')->user()->Genre }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
-                                                                                Domaines d'activites :
+                                                                                Emploi :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->activites }}
+                                                                                {{ auth('atos')->user()->emploi->Nom }}
                                                                             </td>
                                                                         </tr>
+                                                                        
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Fonction :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('atos')->user()->fao->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Structure :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('atos')->user()->structure->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        {{-- <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Departement :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->departement->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Titre :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->titre->Nom }}
+                                                                            </td>
+                                                                        </tr> --}}
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
                                                                                 Date d'inscription
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->created_at }}
+                                                                                {{ auth('atos')->user()->created_at }}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -255,8 +289,8 @@
                                                                                 Nom prénom :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->nom }}
-                                                                                {{ auth()->user()->prenom }}
+                                                                                {{ auth('enseignant')->user()->Nom }}
+                                                                                {{ auth('enseignant')->user()->Prenom }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -264,7 +298,7 @@
                                                                                 Mobile :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                +(226) {{ auth()->user()->telephone }}
+                                                                                +(226) {{ auth('enseignant')->user()->Telephone }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -272,31 +306,64 @@
                                                                                 E-mail :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->email }}
+                                                                                {{ auth('enseignant')->user()->Email }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
-                                                                                Adresse :
+                                                                                Genre :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->adresse }}
+                                                                                {{ auth('enseignant')->user()->Genre }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
-                                                                                Préférences :
+                                                                                Titre :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->preferences }}
+                                                                                {{ auth('enseignant')->user()->titre->Nom }}
                                                                             </td>
                                                                         </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Grade :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->grade->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Fonction :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->fonction->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                UFR :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->ufr->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Département :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->departement->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
                                                                                 Date d'inscription
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                {{ auth()->user()->created_at }}
+                                                                                {{ auth('enseignant')->user()->created_at }}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>

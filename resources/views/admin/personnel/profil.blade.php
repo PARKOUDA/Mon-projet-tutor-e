@@ -1,88 +1,89 @@
+
 @extends('admin.layouts.app')
 
-@section('titre', "Profil de l'administrateur")
+@section('titre', 'Mon profil enseignant')
 
 @section('contenu')
-    <div class="main-panel">
-        <div class="content-wrapper">
-            <!-- <div class="message bg-success" th:if="${success !=null}">
-            <h3 style="color: #fff; text-align: center; padding: 12px">
-              [[${success}]]
-            </h3>
-          </div>
-          -->
+<div class="main-panel">
+    <div class="content-wrapper">
 
-            <div class="row">
-                <div class="col-md-12 grid-margin">
-                    <div class="d-flex justify-content-between flex-wrap">
-                        <div class="d-flex align-items-end flex-wrap">
-                            <div class="me-md-3 me-xl-5">
-                                <h2>Mon profil</h2>
-                            </div>
-                            <div class="d-flex">
-                                <i class="mdi mdi-home text-muted hover-cursor"></i>
-                                <p class="text-muted mb-0 hover-cursor">
-                                    &nbsp;/&nbsp;-&nbsp;
-                                </p>
-                            </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex align-items-end flex-wrap">
+                        <div class="me-md-3 me-xl-5">
+                            <h2>Mon profil ENSEIGNANT</h2>
+                        </div>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">
+                                &nbsp;/&nbsp;-&nbsp;
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!--########################################### Mon profil ############################################ -->
+        <!--########################################### Mon profil ############################################ -->
 
-            <div class="main-content">
-                <div class="page-content">
-                    <div class="container-fluid">
-                        <div class="profile-foreground position-relative mx-n4 mt-n4">
-                            <div class="profile-wid-bg">
-                                <img src="assets/images/profile-bg.jpg" alt="" class="profile-wid-img" />
-                            </div>
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="profile-foreground position-relative mx-n4 mt-n4">
+                        <div class="profile-wid-bg">
+                            <img src="assets/images/profile-bg.jpg" alt="" class="profile-wid-img" />
                         </div>
-                        <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
-                            <div class="row g-4">
-                                <!--end col-->
-                                <div class="col">
-                                    <div class="p-2">
-                                        <h2 class="text-dark mb-1">Nom de l'Admin</h2>
-                                    </div>
+                    </div>
+                    <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
+                        <div class="row g-4">
+                            <!--end col-->
+                            <div class="col">
+                                <div class="p-2">
+                                    <h2 class="text-dark mb-1">{{ auth('enseignant')->user()->Nom }} {{ auth('enseignant')->user()->Prenom }}</h2>
                                 </div>
-                                <!--end col-->
-
-                                <!--end col-->
                             </div>
-                            <!--end row-->
+                            <!--end col-->
+                            <!--end col-->
                         </div>
+                        <!--end row-->
+                    </div>
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div>
-                                    <div class="d-flex">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1"
-                                            role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab"
-                                                    role="tab">
-                                                    <i class="ri-airplay-fill d-inline-block d-md-none"></i>
-                                                    <span class="d-none d-md-inline-block">Mes informations</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link fs-14" data-bs-toggle="tab" href="#documents"
-                                                    role="tab">
-                                                    <i class="ri-folder-4-line d-inline-block d-md-none"></i>
-                                                    <span class="d-none d-md-inline-block">Paramètre du compte</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Tab panes -->
-                                    <div class="tab-content pt-4 text-muted">
-                                        <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div>
+                                <div class="d-flex">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-pills animation-nav profile-nav gap-2 gap-lg-3 flex-grow-1"
+                                        role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-14 active" data-bs-toggle="tab" href="#overview-tab"
+                                                role="tab">
+                                                <i class="ri-airplay-fill d-inline-block d-md-none"></i>
+                                                <span class="d-none d-md-inline-block">Mes informations</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-14" data-bs-toggle="tab" href="#documents" role="tab">
+                                                <i class="ri-folder-4-line d-inline-block d-md-none"></i>
+                                                <span class="d-none d-md-inline-block">Paramètre du compte</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Tab panes -->
+                                <div class="tab-content pt-4 text-muted">
+                                    <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                                        {{-- @if (auth()->user()->role == 'user')
                                             <div class="row">
-                                                <div class="col-xxl-3">
+                                                <div class="col-xxl-7">
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <div class="table-responsive">
@@ -93,7 +94,8 @@
                                                                                 Nom prénom :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                SAWADAGO AMIDOU
+                                                                                {{ auth()->user()->nom }}
+                                                                                {{ auth()->user()->prenom }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -101,7 +103,7 @@
                                                                                 Mobile :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                +(226) 56 77 98 22
+                                                                                +(226) {{ auth()->user()->telephone }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -109,25 +111,7 @@
                                                                                 E-mail :
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                amidou@gmail.com
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th class="ps-0" scope="row">
-                                                                                Localisation :
-                                                                            </th>
-                                                                            <td class="text-muted">
-                                                                                Koudougou
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th class="ps-0" scope="row">
-                                                                                Préférences :
-                                                                            </th>
-                                                                            <td class="text-muted">
-                                                                                <strong>Cinéma</strong>,
-                                                                                <strong>Foir</strong>,
-                                                                                <strong>Thèatre</strong>
+                                                                                {{ auth()->user()->email }}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -135,7 +119,197 @@
                                                                                 Date d'inscription
                                                                             </th>
                                                                             <td class="text-muted">
-                                                                                24 Nov 2021
+                                                                                {{ auth()->user()->created_at }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end card body -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+
+                                                <!--end col-->
+                                            </div>
+                                            <!--end row-->
+                                            <div class="row">
+                                                <div class="col-xxl-5">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="table-responsive">
+                                                                <img src="{{ asset('storage/' . auth()->user()->photo) }}"
+                                                                    alt="" class="image-profil">
+                                                            </div>
+                                                        </div>
+                                                        <!-- end card body -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+
+                                                <!--end col-->
+                                            </div>
+                                        @endif
+
+                                        @if (auth()->user()->role == 'personnelAtos')
+                                            <div class="row">
+                                                <div class="col-xxl-7">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-borderless mb-0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Nom :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth()->user()->nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Mobile :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                +(226) {{ auth()->user()->telephone }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                E-mail :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth()->user()->email }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Adresse :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth()->user()->adresse }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Domaines d'activites :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth()->user()->activites }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Date d'inscription
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth()->user()->created_at }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end card body -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+
+                                                <!--end col-->
+                                            </div>
+                                            <!--end row-->
+                                        @endif --}}
+
+
+                                            <div class="row">
+                                                <div class="col-xxl-7">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-borderless mb-0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Nom prénom :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->Nom }}
+                                                                                {{ auth('enseignant')->user()->Prenom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Mobile :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                +(226) {{ auth('enseignant')->user()->Telephone }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                E-mail :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->Email }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Genre :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->Genre }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Titre :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->titre->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Grade :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->grade->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Fonction :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->fonction->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                UFR :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->ufr->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Département :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->departement->Nom }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
+                                                                                Date d'inscription
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->created_at }}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -151,184 +325,287 @@
                                             </div>
                                             <!--end row-->
                                         </div>
-                                        <!--end tab-pane-->
-                                        <div class="tab-pane fade" id="documents" role="tabpanel">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title mb-3">
-                                                        Edition de mon compte
-                                                    </h5>
-                                                    <br />
-                                                    <form action="javascript:void(0);">
-                                                        <div class="row">
+                                    <!--end tab-pane-->
+                                    <div class="tab-pane fade" id="documents" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-3">
+                                                    Edition les informations de mon compte
+                                                </h5>
+                                                <br />
+                                                {{-- <form action="{{ route('private.profil-edition') }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="row">
+                                                        @if (auth()->user()->role == 'admin' || auth()->user()->role == 'enseignant')
                                                             <div class="col-lg-6">
                                                                 <div class="mb-3">
-                                                                    <label for="fullname" class="form-label">Nom et
-                                                                        prénom</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="fullname" placeholder="Entrez votre nom"
-                                                                        value="" />
+                                                                    <label for="fullname" class="form-label">Nom</label>
+                                                                    <input type="text" name="nom"
+                                                                        class="form-control" id="fullname"
+                                                                        placeholder="Entrez votre nom"
+                                                                        value="{{ auth()->user()->nom }}" />
                                                                 </div>
                                                             </div>
-                                                            <!--end col-->
                                                             <div class="col-lg-6">
                                                                 <div class="mb-3">
-                                                                    <label for="email"
-                                                                        class="form-label">E-mail</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="email" placeholder="Entrez votre email"
-                                                                        value="" />
+                                                                    <label for="fullname"
+                                                                        class="form-label">Prénom</label>
+                                                                    <input type="text" name="prenom"
+                                                                        class="form-control" id="fullname"
+                                                                        placeholder="Entrez votre prénom"
+                                                                        value="{{ auth()->user()->prenom }}" />
                                                                 </div>
                                                             </div>
-                                                            <!--end col-->
+                                                        @endif
+                                                        @if (auth()->user()->role == 'personnelAtos')
                                                             <div class="col-lg-6">
                                                                 <div class="mb-3">
-                                                                    <label for="numero" class="form-label">Numero de
-                                                                        telephone</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="telephone"
-                                                                        placeholder="Entrez votre numero de telephone"
-                                                                        value="" />
+                                                                    <label for="fullname" class="form-label">Nom </label>
+                                                                    <input type="text" name="nom"
+                                                                        class="form-control" id="fullname"
+                                                                        placeholder="Entrez votre nom "
+                                                                        value="{{ auth()->user()->nom }}" />
                                                                 </div>
                                                             </div>
-                                                            <!--end col-->
+                                                        @endif
+                                                        <!--end col-->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="email"
+                                                                    class="form-labonneabel">E-mail</label>
+                                                                <input type="email" name="email" class="form-control"
+                                                                    id="email" placeholder="Entrez votre email"
+                                                                    value="{{ auth()->user()->email }}" />
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="numero" class="form-label">Numéro de
+                                                                    telephone</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="telephone" id="telephone"
+                                                                    placeholder="Entrez votre numero de telephone"
+                                                                    value="{{ auth()->user()->telephone }}" />
+                                                            </div>
+                                                        </div>
+                                                        @if (auth()->user()->role == 'personnelAtos')
                                                             <div class="col-lg-6">
                                                                 <div class="mb-3">
                                                                     <label for="siege" class="form-label">Siège</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="siege" placeholder="Entrez votre siège"
-                                                                        value="" />
+                                                                    <input type="text" name="siege"
+                                                                        class="form-control" id="siege"
+                                                                        placeholder="Entrez votre siége"
+                                                                        value="{{ auth()->user()->siege }}" />
                                                                 </div>
                                                             </div>
-                                                            <!--end col-->
 
-                                                            <!--end col-->
-                                                            <div class="col-lg-12">
+                                                            <div class="col-lg-6">
                                                                 <div class="mb-3">
-                                                                    <label for="skillsInput" class="form-label">Domaine
-                                                                        d'activité</label>
-                                                                    <select class="form-control"></select>
+                                                                    <label for="adresse"
+                                                                        class="form-label">Adresse</label>
+                                                                    <input type="text" name="adresse"
+                                                                        class="form-control" id="siege"
+                                                                        placeholder="Entrez votre adresse"
+                                                                        value="{{ auth()->user()->adresse }}" />
                                                                 </div>
                                                             </div>
 
-                                                            <!--end col-->
-
-                                                            <!--end col-->
-                                                            <div class="col-lg-12">
-                                                                <div class="hstack gap-2 justify-content-end">
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary text-white">
-                                                                        Sauvegarder les changements
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                        </div>
-                                                        <!--end row-->
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <br />
-
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title mb-3">
-                                                        Edition les informations d'authentification
-                                                    </h5>
-                                                    <br />
-                                                    <form action="javascript:void(0);">
-                                                        <div class="row g-2">
-                                                            <div class="col-lg-4">
-                                                                <div>
-                                                                    <label for="oldpasswordInput"
-                                                                        class="form-label">Ancien mot de passe*</label>
-                                                                    <input type="password" class="form-control"
-                                                                        id="oldpasswordInput"
-                                                                        placeholder="Entrez votre mot de passe actuel" />
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                            <div class="col-lg-4">
-                                                                <div>
-                                                                    <label for="newpasswordInput"
-                                                                        class="form-label">Nouveau mot de passe*</label>
-                                                                    <input type="password" class="form-control"
-                                                                        id="newpasswordInput"
-                                                                        placeholder="Entrez votre nouveau mot de passe" />
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                            <div class="col-lg-4">
-                                                                <div>
-                                                                    <label for="confirmpasswordInput"
-                                                                        class="form-label">Confirmer votre nouveau mot de
-                                                                        passe*</label>
-                                                                    <input type="password" class="form-control"
-                                                                        id="confirmpasswordInput"
-                                                                        placeholder="Répétez votre nouveau mot de passe" />
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                            <br />
-                                                            <div class="col-lg-12">
+                                                            <div class="col-lg-6">
                                                                 <div class="mb-3">
-                                                                    <a href="javascript:void(0);"
-                                                                        class="link-primary text-decoration-underline">Mot
-                                                                        de passe oublier ?</a>
+                                                                    <label for="skillsInput" class="form-label">Domaines
+                                                                        d'activités</label>
+                                                                    <input type="text" name="activites"
+                                                                        class="form-control" id="siege"
+                                                                        placeholder="Entrez vos domaoines d'activités"
+                                                                        value="{{ auth()->user()->activites }}" />
                                                                 </div>
                                                             </div>
-                                                            <!--end col-->
-                                                            <div class="col-lg-12">
-                                                                <div class="text-end">
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary text-white">
-                                                                        Changer de mot de passe
-                                                                    </button>
+                                                        @endif
+
+                                                        @if (auth()->user()->role == 'enseignant')
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label for="adresse"
+                                                                        class="form-label">Adresse</label>
+                                                                    <input type="text" name="adresse"
+                                                                        class="form-control" id="siege"
+                                                                        placeholder="Entrez votre adresse"
+                                                                        value="{{ auth()->user()->adresse }}" />
                                                                 </div>
                                                             </div>
-                                                            <!--end col-->
+
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label for="skillsInput"
+                                                                        class="form-label">Préférences</label>
+                                                                    <input type="text" name="preferences"
+                                                                        class="form-control" id="siege"
+                                                                        placeholder="Entrez votre adresse"
+                                                                        value="{{ auth()->user()->preferences }}" />
+                                                                </div>
+                                                            </div>
+                                                        @endif
+
+                                                        <div class="col-lg-12">
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')"
+                                                                    class="btn btn-primary text-white">
+                                                                    Sauvegarder les changements
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                        <!--end row-->
-                                                    </form>
-                                                </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </form> --}}
                                             </div>
                                         </div>
-                                        <!--end tab-pane-->
+                                        <br />
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-3">
+                                                    Edition les informations d'authentification
+                                                </h5>
+                                                <br />
+                                                {{-- <form action="{{ route('private.edit-password') }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="row g-2">
+                                                        <div class="col-lg-12">
+                                                            <div>
+                                                                <label for="confirmpasswordInput"
+                                                                    class="form-label">Nouveau
+                                                                    mot de
+                                                                    passe*</label>
+                                                                <input type="password" name="new_password"
+                                                                    class="form-control" id="confirmpasswordInput"
+                                                                    placeholder="Nouveau mot de passe" />
+                                                                @if ($errors->has('new_password'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('new_password') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div>
+                                                                <label for="newpasswordInput" class="form-label">Répétez
+                                                                    votre nouveau mot
+                                                                    de passe*</label>
+                                                                <input type="password" class="form-control"
+                                                                    id="newpasswordInput" name="new_password_confirmation"
+                                                                    placeholder="Repetez mot de passe" />
+
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <br />
+                                                        <div class="col-lg-12">
+                                                            <div class="mb-3">
+                                                                <a href="javascript:void(0);"
+                                                                    class="link-primary text-decoration-underline">Mot de
+                                                                    passe oublier ?</a>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-lg-12">
+                                                            <div class="text-end">
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')"
+                                                                    class="btn btn-primary text-white">
+                                                                    Changer de mot de passe
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </form> --}}
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-3">
+                                                    Changer votre image de profil
+                                                </h5>
+                                                <br />
+                                                {{-- <form action="{{ route('private.edit-image') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="row g-2">
+                                                        <div class="col-lg-12">
+                                                            <div>
+                                                                <label for="confirmpasswordInput"
+                                                                    class="form-label">Choisissez une image*</label>
+                                                                <input type="file" name="new_image"
+                                                                    class="form-control" id="confirmFileInput" />
+                                                                @if ($errors->has('new_image'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('new_image') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <br />
+
+                                                        <!--end col-->
+                                                        <div class="col-lg-12">
+                                                            <div class="text-end">
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')"
+                                                                    class="btn btn-primary text-white">
+                                                                    Changer l'image du profil
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </form> --}}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!--end tab-content-->
+                                    <!--end tab-pane-->
                                 </div>
+                                <!--end tab-content-->
                             </div>
-                            <!--end col-->
                         </div>
-                        <!--end row-->
+                        <!--end col-->
                     </div>
-                    <!-- container-fluid -->
+                    <!--end row-->
                 </div>
-                <!-- End Page-content -->
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
 
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script>
-                                © FasoEvent.
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="text-sm-end d-none d-sm-block">
-                                    Developpé par le groupe de java unz
-                                </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            © Université Norbert ZONGO.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Gestion du personnel UNZ
                             </div>
                         </div>
                     </div>
-                </footer>
-            </div>
-
-            <!-- fin de bienvenue -->
-
-            <!-- main-panel ends -->
+                </div>
+            </footer>
         </div>
-        <!-- page-body-wrapper ends -->
+
+        <!-- fin de bienvenue -->
+    </div>
+        <!-- main-panel ends -->
     </div>
 @endsection

@@ -25,6 +25,9 @@
             <a href="/">
                 <img src="{{asset('assets/images/logo-unz.jpg')}}" alt="logo de unz" width="100px">
             </a>
+        </div><br><br>
+        <div style="text-align:center;font-size: 30px;">
+            Veuillez vous inscrire
         </div>
         @if($errors->has('login'))
         <div class="alert alert-danger form-login">
@@ -66,20 +69,31 @@
 
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" name="Email" required placeholder="Entrez votre email">
+                    <input type="email" name="Email" required placeholder="Entrez votre email">
                     <div class="underline"></div>
-                    {{-- <label for="">Email</label> --}}
+                    {{-- <label for="">Matricule</label> --}}
                     @if ($errors->has('Email'))
                     <span class="text-danger">{{  $errors->first('Email') }}</span>
                     @endif
                 </div>
+            </div>
+
+            <div class="form-row">
                 <div class="input-data">
-                    <input type="password" name="Mot_de_passe" required placeholder="Entrez votre mot de passe">
-            
+                    <input type="password" name="Mot_de_passe" required placeholder="Entrez votre Mot de passe">
                     <div class="underline"></div>
-                    {{-- <label for="">Mot de passe</label> --}}
+                    {{-- <label for="">Email</label> --}}
                     @if ($errors->has('Mot_de_passe'))
                     <span class="text-danger">{{  $errors->first('Mot_de_passe') }}</span>
+                    @endif
+                </div>
+
+                <div class="input-data">
+                    <input type="password" name="Mot_de_passe_confirmation" required placeholder="Répétez votre mot de passe">
+                    <div class="underline"></div>
+                    {{-- <label for="">Mot de passe</label> --}}
+                    @if ($errors->has('Mot_de_passe_confirmation'))
+                    <span class="text-danger">{{  $errors->first('Mot_de_passe_confirmation') }}</span>
                     @endif
                 </div>
             </div>

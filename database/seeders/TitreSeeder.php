@@ -17,7 +17,7 @@ class TitreSeeder extends Seeder
             'Nom' => 'Enseignant chercheur'
         ]);
         Titre::create([
-            'Nom' => 'Enseignant à temps plein'
+            'Nom' => 'Enseignant à temps plein (ETP)'
         ]);Titre::create([
             'Nom' => 'Autre'
         ]);
