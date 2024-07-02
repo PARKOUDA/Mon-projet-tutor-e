@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ModifieEnseignantRequest extends FormRequest
@@ -27,15 +29,27 @@ class ModifieEnseignantRequest extends FormRequest
             "Prenom" => ["required"],
             "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
-            "Email" => ["required", "email"],
-            "titre_id" => ["required", 'exists:titres,id'],
-            "Photo" => ['image', 'max:2000'],
-            "grade_id" => ["required",'exists:grades,id'],
-            "fonction_id" => ["required", 'exists:fonctions,id'],
-            "ufr_id" => ["required", 'exists:ufrs,id'],
-            "departements" => ['array'],
-            "departements.*" => ['exists:departements,id'],
-            "role_id" => ["required", 'exists:roles,id'],
+            "Email" => ["nullable", "required", "email", Rule::unique('enseignants')->ignore($this->id)],
+            "password" => ["nullable", 'min:4'],
+            "titre_id" => ["required"],
+            "Photo" => ["nullable", "image", 'max:2000'],
+            "grade_id" => ["required"],
+            "fonction_id" => ["required"],
+            "ufr_id" => ["required"],
+            "departement_id" => ["required"],
+            "role" => ["required"],
         ];
+    }
+
+    /**
+     * Prétraitement des données avant la validation.
+     *
+     * @return array
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'password' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
+        ]);
     }
 }

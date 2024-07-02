@@ -30,12 +30,12 @@ class AuthPublicController extends Controller
 
     public function inscriptionEnseignant()
     {
-        $titres = Titre::all();
-        $grades = Grade::all();
-        $fonctions = Fonction::all();
-        $ufrs = Ufr::all();
-        $departements = Departement::all();
-
+        $titres = Titre::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des titres
+        $grades = Grade::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des grades
+        $fonctions = Fonction::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des fonctions
+        $ufrs = Ufr::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des UFR
+        $departements = Departement::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des départements
+    
         return view('public.inscription-enseignant', [
             "titres" => $titres,
             "grades" => $grades,
@@ -44,6 +44,7 @@ class AuthPublicController extends Controller
             "departements" => $departements
         ]);
     }
+    
 
     public function inscriptionEnseignantAction(Request $request)
     {
@@ -52,7 +53,7 @@ class AuthPublicController extends Controller
             $request->all(),
             [
                 'Email' => 'required|email|max:255|unique:users',
-                'Mot_de_passe' => 'required|min:4|confirmed',
+                'password' => 'required|min:4|confirmed',
                 'Matricule' => 'required',
                 'Nom' => 'required',
                 'Prenom' => 'required',
@@ -136,9 +137,11 @@ class AuthPublicController extends Controller
 
     public function inscriptionAtos()
     {
-        $emplois = Emploi::all();
-        $structures = Structure::all();
-        $faos = Fao::all();
+        
+        $emplois = Emploi::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des emplois
+        $structures = Structure::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des structures
+        $faos= Fao::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des faos
+        
 
         return view('public.inscription-atos', [
 

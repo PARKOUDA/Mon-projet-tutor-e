@@ -26,9 +26,33 @@ use Illuminate\Support\Facades\Validator;
 class PersonnelsController extends Controller
 {
     public function index()
-    {
-        return view("admin.index-admin");
-    }
+{
+    $totalEnseignant = Enseignant::count();
+    $totalAtos = Atos::count();
+    $totalTitre = Titre::count();
+    $totalGrade = Grade::count();
+    $totalDepartement = Departement::count();
+    $totalFonction = Fonction::count();
+    $totalUfr = Ufr::count();
+    $totalStructure = Structure::count();
+    $totalEmploi = Emploi::count();
+    $totalFao = Fao::count();
+    
+    return view('admin.index-admin', compact(
+
+        'totalEnseignant',
+        'totalAtos',
+        'totalTitre',
+        'totalGrade',
+        'totalDepartement',
+        'totalFonction',
+        'totalUfr',
+        'totalStructure',
+        'totalEmploi',
+        'totalFao'
+    ));
+}
+
 
     public function profilEnseignant()
     {
@@ -132,8 +156,22 @@ class PersonnelsController extends Controller
         return redirect()->back()->with('success', 'Profil editer avec succès');
     }
 
-    public function profil() {
-        return view("admin.personnel.profil");
+    public function profil() 
+    {
+        $user = Auth::user();
+        $titres = Titre::all();
+        $grades = Grade::all();
+        $fonctions = Fonction::all();
+        $ufrs = Ufr::all();
+        $departements = Departement::all();
+
+        return view("admin.personnel.profil", [
+            "titres" => $titres,
+            "grades" => $grades,
+            "fonctions" => $fonctions,
+            "ufrs" => $ufrs,
+            "departements" => $departements
+        ]);
     }
 
     public function profilAtos()
@@ -204,11 +242,11 @@ class PersonnelsController extends Controller
         $atos->Telephone = $request->Telephone;
         $atos->Genre = $request->Genre;
         // $atos->password = $request->Mot_de_passe;
-        $atos->structure = $request->structure_id;
+        $atos->structure_id = $request->structure_id;
         $atos->emploi_id = $request->emploi_id;
         $atos->fao_id = $request->fao_id;
         // Update the password only if a new password is provided
-    if ($request->filled('Mot_de_passe')) {
+    if ($request->filled('Mot_de_passe')) { 
         $atos->password = bcrypt($request->Mot_de_passe);
     }
         if ($request->hasFile('Photo')) {
@@ -269,13 +307,20 @@ class PersonnelsController extends Controller
     //debut ajout enseignant à travers le formulaire
     public function ajoutEnseignant()
     {
+        $titres = Titre::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des titres
+        $grades = Grade::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des grades
+        $fonctions = Fonction::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des fonctions
+        $ufrs = Ufr::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des UFR
+        $departements = Departement::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des départements
+    
+        // dd($titres, $grades, $fonctions, $ufrs, $departements);
+
         return view('admin.personnel.ajout-enseigant', [
-            "grades" => Grade::pluck('Nom', 'id'),
-            "fonctions" => Fonction::pluck('Nom', 'id'),
-            "ufrs" => Ufr::pluck('Nom', 'id'),
-            'titres' => Titre::pluck('Nom', 'id'),
-            'roles' => Role::pluck('Nom', 'id'),
-            "departements" => Departement::pluck('Nom', 'id'),
+            "grades" => $grades,
+            "fonctions" => $fonctions,
+            "ufrs" => $ufrs,
+            'titres' => $titres,
+            "departements" => $departements,
         ]);
     }
 
@@ -303,14 +348,20 @@ class PersonnelsController extends Controller
     //fin pour ajout enseignant dans le formulaire
 
     public function modifieEnseignant(Enseignant $enseignant) {
+
+        $titres = Titre::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des titres
+        $grades = Grade::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des grades
+        $fonctions = Fonction::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des fonctions
+        $ufrs = Ufr::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des UFR
+        $departements = Departement::orderBy('nom', 'asc')->get(); // Remplacez 'nom' par le champ correspondant au nom des départements
+    
         return view('admin.personnel.modifier-enseignant', [
             'enseignant' => $enseignant,
-            'titres' => Titre::pluck('Nom','id'),
-            'grades' => Grade::pluck('Nom','id'),
-            'fonctions' => Fonction::pluck('Nom','id'),
-            'ufrs' => Ufr::pluck('Nom','id'),
-            'roles' => Role::pluck('Nom','id'),
-            'departements' => Departement::pluck('Nom','id'),
+            "grades" => $grades,
+            "fonctions" => $fonctions,
+            "ufrs" => $ufrs,
+            'titres' => $titres,
+            "departements" => $departements,
         ]);
     }
 

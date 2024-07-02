@@ -30,13 +30,13 @@ class EnseignantRequest extends FormRequest
             "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
             "Email" => ["required", "email", Rule::unique('enseignants')->ignore($this->id)],
-            "Mot_de_passe" => ['min:4'],
-            "titre_id" => ["required", 'exists:titres,id'],
+            "password" => ['min:4'],
+            "titre_id" => ["required"],
             "Photo" => ['image', 'max:2000'],
-            "grade_id" => ["required",'exists:grades,id'],
-            "fonction_id" => ["required", 'exists:fonctions,id'],
-            "ufr_id" => ["required", 'exists:ufrs,id'],
-            "departement_id" => ["required", 'exists:departements,id'],
+            "grade_id" => ["required"],
+            "fonction_id" => ["required"],
+            "ufr_id" => ["required"],
+            "departement_id" => ["required"],
             "role" => ["required"],
         ];
     }
@@ -49,7 +49,7 @@ class EnseignantRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'Mot_de_passe' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
+            'password' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
         ]);
     }
 }

@@ -3,6 +3,7 @@
 @section('titre', "Ajout d'un Atos")
 
 @section('contenu')
+<div class="main-panel">
     <div class="container-fluid m-3">
         <form class="row g-3" action="" method="post" enctype="multipart/form-data">
             @csrf
@@ -30,11 +31,11 @@
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <label for="" class="form-label">Téléphone</label>
-                <input type="text" placeholder="Téléphone" name="Telephone" class="form-control" value="{{old('Telephone')}}">
-                
-                @error('Telephone')
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <label for="" class="form-label">Email</label>
+                <input type="text" placeholder="Matricule" name="Matricule" class="form-control" value="{{old('Email')}}">
+
+                @error('Email')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
@@ -47,13 +48,33 @@
                 @enderror
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="" class="form-label">Répetez votre mot de passe</label>
+                <input type="password" placeholder="Répetez votre mot de passe" name="Mot_de_passe_confirmation" class="form-control">
+
+                @if ($errors->has('Mot_de_passe_confirmation'))
+                    <span class="text-danger">{{  $errors->first('Mot_de_passe_confirmation') }}</span>
+                    @endif
+                {{-- @error('Mot_de_passe_confirmation')
+                    <div class="text-danger">{{$message}} </div>
+                @enderror --}}
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="" class="form-label">Téléphone</label>
+                <input type="text" placeholder="Téléphone" name="Telephone" class="form-control" value="{{old('Telephone')}}">
+                
+                @error('Telephone')
+                    <div class="text-danger">{{$message}} </div>
+                @enderror
+            </div>
+            
+            {{-- <div class="col-lg-6 col-md-6 col-sm-12">
                 <label for="" class="form-label">Email</label>
                 <input type="text" placeholder="Email" name="Email" class="form-control" value="{{old('Email')}}">
 
                 @error('Email')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <label for="" class="form-label">Genre</label>
@@ -113,7 +134,7 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <select name="fao_id" class="form-select">
-                    <option>Veuillez choisir une fao </option>
+                    <option>Veuillez choisir une fonction </option>
                     @foreach ($faos as $id => $nom)
                         <option value="{{$id}}">{{$nom}}</option>
                     @endforeach
@@ -126,4 +147,6 @@
             <input type="submit" value="Ajouter" class="form-control btn btn-primary text-white">
         </form>
     </div>
+</div>
 @endsection
+

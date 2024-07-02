@@ -333,125 +333,251 @@
                                                     Edition les informations de mon compte
                                                 </h5>
                                                 <br />
-                                                {{-- <form action="{{ route('private.profil-edition') }}" method="POST">
+                                                <form action="{{route('enseignant.profil.action')}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    @method('PUT')
+                                                    @method('POST')
                                                     <div class="row">
-                                                        @if (auth()->user()->role == 'admin' || auth()->user()->role == 'enseignant')
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="fullname" class="form-label">Nom</label>
-                                                                    <input type="text" name="nom"
-                                                                        class="form-control" id="fullname"
-                                                                        placeholder="Entrez votre nom"
-                                                                        value="{{ auth()->user()->nom }}" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="fullname"
-                                                                        class="form-label">Prénom</label>
-                                                                    <input type="text" name="prenom"
-                                                                        class="form-control" id="fullname"
-                                                                        placeholder="Entrez votre prénom"
-                                                                        value="{{ auth()->user()->prenom }}" />
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                        @if (auth()->user()->role == 'personnelAtos')
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="fullname" class="form-label">Nom </label>
-                                                                    <input type="text" name="nom"
-                                                                        class="form-control" id="fullname"
-                                                                        placeholder="Entrez votre nom "
-                                                                        value="{{ auth()->user()->nom }}" />
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                        <!--end col-->
                                                         <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="fullname" class="form-label">Nom</label>
+                                                                <input type="text" name="Nom"
+                                                                    class="form-control" id="fullname"
+                                                                    placeholder="Entrez votre nom"
+                                                                    value="{{ auth('enseignant')->user()->Nom }}" />
+                                                                @if ($errors->has('Nom'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Nom') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="fullname"
+                                                                    class="form-label">Prénom</label>
+                                                                <input type="text" name="Prenom"
+                                                                    class="form-control" id="fullname"
+                                                                    placeholder="Entrez votre prénom"
+                                                                    value="{{ auth('enseignant')->user()->Prenom }}" />
+                                                                @if ($errors->has('Prenom'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Prenom') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <!--end col-->
+
+                                                        <div class="col-lg-12">
+                                                            <div class="mb-3">
+                                                                <label for="email"
+                                                                    class="form-labonneabel">Matricule</label>
+                                                                <input type="text" name="Matricule"
+                                                                    class="form-control" id="email"
+                                                                    placeholder="Entrez votre email"
+                                                                    value="{{ auth('enseignant')->user()->Matricule }}" />
+                                                                @if ($errors->has('Matricule'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Matricule') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
                                                             <div class="mb-3">
                                                                 <label for="email"
                                                                     class="form-labonneabel">E-mail</label>
-                                                                <input type="email" name="email" class="form-control"
-                                                                    id="email" placeholder="Entrez votre email"
-                                                                    value="{{ auth()->user()->email }}" />
+                                                                <input type="email" name="Email"
+                                                                    class="form-control" id="email"
+                                                                    placeholder="Entrez votre email"
+                                                                    value="{{ auth('enseignant')->user()->Email }}" />
+                                                                @if ($errors->has('Email'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Email') }}</span>
+                                                                @endif
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="Mot_de_passe" class="form-label">Mot de
+                                                                    passe</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="Mot_de_passe" id="Mot_de_passe"
+                                                                    placeholder="Entrez votre mot de passe"
+                                                                    value="" />
+                                                                @if ($errors->has('Mot_de_passe'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Mot_de_passe') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="Mot_de_passe_confirmation"
+                                                                    class="form-label">Répétez le mot de passe</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="Mot_de_passe_confirmation" id="telephone"
+                                                                    placeholder="Répétez votre mot de passe"
+                                                                    value="" />
+                                                                @if ($errors->has('Mot_de_passe_confirmation'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Mot_de_passe_confirmation') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
                                                         <!--end col-->
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="numero" class="form-label">Numéro de
                                                                     telephone</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="telephone" id="telephone"
+                                                                    name="Telephone" id="telephone"
                                                                     placeholder="Entrez votre numero de telephone"
-                                                                    value="{{ auth()->user()->telephone }}" />
+                                                                    value="{{ auth('enseignant')->user()->Telephone }}" />
+
+                                                                @if ($errors->has('Telephone'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Telephone') }}</span>
+                                                                @endif
                                                             </div>
                                                         </div>
-                                                        @if (auth()->user()->role == 'personnelAtos')
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="siege" class="form-label">Siège</label>
-                                                                    <input type="text" name="siege"
-                                                                        class="form-control" id="siege"
-                                                                        placeholder="Entrez votre siége"
-                                                                        value="{{ auth()->user()->siege }}" />
-                                                                </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="sexe" class="form-label">Selectionner
+                                                                    votre sexe</label>
+                                                                <select name="Genre" class="form-control" id="">
+                                                                    <option
+                                                                        value="{{ auth('enseignant')->user()->Genre }}">
+                                                                        Masculin</option>
+                                                                    <option value="Masculin"
+                                                                        {{ auth('enseignant')->user()->Genre == 'Masculin' ? 'selected' : '' }}>
+                                                                        Masculin</option>
+                                                                    <option value="Feminin"
+                                                                        {{ auth('enseignant')->user()->Genre == 'Feminin' ? 'selected' : '' }}>
+                                                                        Feminin</option>
+                                                                </select>
+                                                                @if ($errors->has('Genre'))
+                                                                    <span class="text-danger">{{ $errors->first('Genre') }}</span>
+                                                                @endif
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="adresse"
-                                                                        class="form-label">Adresse</label>
-                                                                    <input type="text" name="adresse"
-                                                                        class="form-control" id="siege"
-                                                                        placeholder="Entrez votre adresse"
-                                                                        value="{{ auth()->user()->adresse }}" />
-                                                                </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="titre" class="form-label">Selectionner
+                                                                    votre titre</label>
+                                                                <select name="titre_id" class="form-control"
+                                                                    id="">
+                                                                    @foreach ($titres as $titre)
+                                                                        <option value="{{ $titre->id }}"
+                                                                            {{ auth('enseignant')->user()->titre_id == $titre->id ? 'selected' : '' }}>
+                                                                            {{ $titre->Nom }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('titre_id'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('titre_id') }}</span>
+                                                                @endif
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="skillsInput" class="form-label">Domaines
-                                                                        d'activités</label>
-                                                                    <input type="text" name="activites"
-                                                                        class="form-control" id="siege"
-                                                                        placeholder="Entrez vos domaoines d'activités"
-                                                                        value="{{ auth()->user()->activites }}" />
-                                                                </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="garde" class="form-label">Selectionner votre garde</label>
+                                                                <select name="grade_id" class="form-control" id="">
+                                                                    @foreach ($grades as $grade)
+                                                                        <option value="{{ $grade->id }}"
+                                                                            {{ auth('enseignant')->user()->grade_id == $grade->id ? 'selected' : '' }}>
+                                                                            {{ $grade->Nom }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('grade_id'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('grade_id') }}</span>
+                                                                @endif
                                                             </div>
-                                                        @endif
+                                                        </div>
 
-                                                        @if (auth()->user()->role == 'enseignant')
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="adresse"
-                                                                        class="form-label">Adresse</label>
-                                                                    <input type="text" name="adresse"
-                                                                        class="form-control" id="siege"
-                                                                        placeholder="Entrez votre adresse"
-                                                                        value="{{ auth()->user()->adresse }}" />
-                                                                </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="mb-3">
+                                                                <label for="photo" class="form-labonneabel">Votre photo</label>
+                                                                <input type="file" class="form-control"
+                                                                    name="Photo" id="fileInput"
+                                                                    accept=".jpg, .jpeg, .png" />
+                                                                <div class="underline"></div>
+                                                                @if ($errors->has('Photo'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('Photo') }}</span>
+                                                                @endif
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="skillsInput"
-                                                                        class="form-label">Préférences</label>
-                                                                    <input type="text" name="preferences"
-                                                                        class="form-control" id="siege"
-                                                                        placeholder="Entrez votre adresse"
-                                                                        value="{{ auth()->user()->preferences }}" />
-                                                                </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="fonction" class="form-label">Selectionner
+                                                                    votre fonction</label>
+                                                                <select name="fonction_id" class="form-control"
+                                                                    id="">
+                                                                    @foreach ($fonctions as $fonction)
+                                                                        <option value="{{ $fonction->id }}"
+                                                                            {{ auth('enseignant')->user()->fonction_id == $fonction->id ? 'selected' : '' }}>
+                                                                            {{ $fonction->Nom }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('fonction_id'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('fonction_id') }}</span>
+                                                                @endif
                                                             </div>
-                                                        @endif
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="ufr" class="form-label">Selectionner
+                                                                    votre ufr</label>
+                                                                <select name="ufr_id" class="form-control"
+                                                                    id="">
+                                                                    @foreach ($ufrs as $ufr)
+                                                                        <option value="{{ $ufr->id }}"
+                                                                            {{ auth('enseignant')->user()->ufr_id == $ufr->id ? 'selected' : '' }}>
+                                                                            {{ $ufr->Nom }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('ufr_id'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('ufr_id') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div class="mb-3">
+                                                                <label for="departement"
+                                                                    class="form-labonneabel">Votre departement</label>
+                                                                <select name="departement_id" class="form-control"
+                                                                    id="">
+                                                                    @foreach ($departements as $departement)
+                                                                        <option value="{{ $departement->id }}"
+                                                                            {{ auth('enseignant')->user()->departement_id == $departement->id ? 'selected' : '' }}>
+                                                                            {{ $departement->Nom }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                                @if ($errors->has('departement_id'))
+                                                                    <span
+                                                                        class="text-danger">{{ $errors->first('departement_id') }}</span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
 
                                                         <div class="col-lg-12">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="submit"
-                                                                    onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')"
+                                                                    {{-- onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')" --}}
                                                                     class="btn btn-primary text-white">
                                                                     Sauvegarder les changements
                                                                 </button>
@@ -460,117 +586,11 @@
                                                         <!--end col-->
                                                     </div>
                                                     <!--end row-->
-                                                </form> --}}
+                                                </form>
                                             </div>
                                         </div>
                                         <br />
 
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">
-                                                    Edition les informations d'authentification
-                                                </h5>
-                                                <br />
-                                                {{-- <form action="{{ route('private.edit-password') }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="row g-2">
-                                                        <div class="col-lg-12">
-                                                            <div>
-                                                                <label for="confirmpasswordInput"
-                                                                    class="form-label">Nouveau
-                                                                    mot de
-                                                                    passe*</label>
-                                                                <input type="password" name="new_password"
-                                                                    class="form-control" id="confirmpasswordInput"
-                                                                    placeholder="Nouveau mot de passe" />
-                                                                @if ($errors->has('new_password'))
-                                                                    <span
-                                                                        class="text-danger">{{ $errors->first('new_password') }}</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-12">
-                                                            <div>
-                                                                <label for="newpasswordInput" class="form-label">Répétez
-                                                                    votre nouveau mot
-                                                                    de passe*</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="newpasswordInput" name="new_password_confirmation"
-                                                                    placeholder="Repetez mot de passe" />
-
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <br />
-                                                        <div class="col-lg-12">
-                                                            <div class="mb-3">
-                                                                <a href="javascript:void(0);"
-                                                                    class="link-primary text-decoration-underline">Mot de
-                                                                    passe oublier ?</a>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-lg-12">
-                                                            <div class="text-end">
-                                                                <button type="submit"
-                                                                    onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')"
-                                                                    class="btn btn-primary text-white">
-                                                                    Changer de mot de passe
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                    </div>
-                                                    <!--end row-->
-                                                </form> --}}
-                                            </div>
-                                        </div>
-                                        <br />
-
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-3">
-                                                    Changer votre image de profil
-                                                </h5>
-                                                <br />
-                                                {{-- <form action="{{ route('private.edit-image') }}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="row g-2">
-                                                        <div class="col-lg-12">
-                                                            <div>
-                                                                <label for="confirmpasswordInput"
-                                                                    class="form-label">Choisissez une image*</label>
-                                                                <input type="file" name="new_image"
-                                                                    class="form-control" id="confirmFileInput" />
-                                                                @if ($errors->has('new_image'))
-                                                                    <span
-                                                                        class="text-danger">{{ $errors->first('new_image') }}</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-                                                        <br />
-
-                                                        <!--end col-->
-                                                        <div class="col-lg-12">
-                                                            <div class="text-end">
-                                                                <button type="submit"
-                                                                    onclick="return confirm('Etes vous sûr de vouloir enrregistré les nouveaux changement ???')"
-                                                                    class="btn btn-primary text-white">
-                                                                    Changer l'image du profil
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                    </div>
-                                                    <!--end row-->
-                                                </form> --}}
-                                            </div>
-                                        </div>
                                     </div>
                                     <!--end tab-pane-->
                                 </div>

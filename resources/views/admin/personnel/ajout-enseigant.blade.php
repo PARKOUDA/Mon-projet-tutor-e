@@ -3,6 +3,7 @@
 @section('titre', "Ajout d'un Enseignant")
 
 @section('contenu')
+<div class="main-panel">
     <div class="container-fluid m-3">
         <form class="row g-3" action="" method="post" enctype="multipart/form-data">
             @csrf
@@ -30,27 +31,35 @@
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <label for="" class="form-label">Téléphone</label>
-                <input type="text" placeholder="Téléphone" name="Telephone" class="form-control" value="{{old('Telephone')}}">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <label for="" class="form-label">Email</label>
+                <input type="text" placeholder="Matricule" name="Email" class="form-control" value="{{old('Email')}}">
 
-                @error('Telephone')
+                @error('Email')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <label for="" class="form-label">Mot de passe</label>
-                <input type="password" placeholder="Mot de passe" name="Mot_de_passe" class="form-control">
+                <input type="password" placeholder="Mot de passe" name="password" class="form-control">
 
                 @error('Mot de passe')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <label for="" class="form-label">Email</label>
-                <input type="text" placeholder="Email" name="Email" class="form-control" value="{{old('Email')}}">
+                <label for="" class="form-label">Répetez votre mot de passe</label>
+                <input type="password" placeholder="Répetez votre mot de passe" name="password_confirmation" class="form-control">
 
-                @error('Email')
+                @if ($errors->has('password_confirmation'))
+                    <span class="text-danger">{{  $errors->first('password_confirmation') }}</span>
+                    @endif
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="" class="form-label">Téléphone</label>
+                <input type="text" placeholder="Téléphone" name="Telephone" class="form-control" value="{{old('Telephone')}}">
+
+                @error('Telephone')
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
@@ -65,8 +74,8 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <select name="titre_id" class="form-select">
                     <option>Veuillez choisir un titre</option>
-                    @foreach ($titres as $id => $nom)
-                        <option value="{{$id}}">{{$nom}}</option>
+                    @foreach ($titres as $titre)
+                        <option value="{{$titre->id}}">{{$titre->Nom}}</option>
                     @endforeach
                 </select>
 
@@ -77,8 +86,8 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <select name="grade_id" class="form-select">
                     <option>Veuillez choisir une grade</option>
-                    @foreach ($grades as $id => $nom)
-                        <option value="{{$id}}">{{$nom}}</option>
+                    @foreach ($grades as $grade)
+                    <option value="{{$grade->id}}">{{$grade->Nom}}</option>
                     @endforeach
                 </select>
 
@@ -89,8 +98,8 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <select name="fonction_id" class="form-select">
                     <option>Veuillez choisir un fonction</option>
-                    @foreach ($fonctions as $id => $nom)
-                        <option value="{{$id}}">{{$nom}}</option>
+                    @foreach ($fonctions as $fonction)
+                        <option value="{{$fonction->id}}">{{$fonction->Nom}}</option>
                     @endforeach
                 </select>
 
@@ -109,8 +118,8 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <select name="ufr_id" class="form-select">
                     <option>Veuillez choisir une ufr</option>
-                    @foreach ($ufrs as $id => $nom)
-                        <option value="{{$id}}">{{$nom}}</option>
+                    @foreach ($ufrs as $ufr)
+                        <option value="{{$ufr->id}}">{{$ufr->Nom}}</option>
                     @endforeach
                 </select>
 
@@ -139,8 +148,8 @@
 
                 <select name="departement_id" class="form-select">
                     <option>Veuillez choisir un departement</option>
-                    @foreach ($departements as $id => $nom)
-                        <option value="{{$id}}">{{$nom}}</option>
+                    @foreach ($departements as $departement)
+                        <option value="{{$departement->id}}">{{$departement->Nom}}</option>
                     @endforeach
                 </select>
 
@@ -151,4 +160,40 @@
             <input type="submit" value="Ajouter" class="form-control btn btn-primary text-white">
         </form>
     </div>
+</div>
+@endsection
+
+@section("scripts")
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ufrSelect = document.querySelector('select[name="ufr_id"]');
+        var departementSelect = document.querySelector('select[name="departement_id"]');
+
+        ufrSelect.addEventListener('change', function() {
+            var ufrId = this.value;
+
+            axios.get('/get-departements/' + ufrId)
+                .then(function(response) {
+                    var departements = response.data.departements;
+
+                    // Effacement des options existantes
+                    departementSelect.innerHTML = '<option>Veuillez choisir un departement</option>';
+
+                    // Ajout des nouvelles options basées sur les départements récupérés
+                    departements.forEach(function(departement) {
+                        var option = document.createElement('option');
+                        option.value = departement.id;
+                        option.text = departement.Nom;
+                        departementSelect.appendChild(option);
+                    });
+                })
+                .catch(function(error) {
+                    console.error('Une erreur s\'est produite :', error);
+                });
+        });
+    });
+</script>
 @endsection

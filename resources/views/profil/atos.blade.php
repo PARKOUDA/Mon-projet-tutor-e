@@ -368,7 +368,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <<div class="col-lg-12">
+                                                            <div class="col-lg-12">
                                                                 <div class="mb-3">
                                                                     <label for="fao" class="form-label">Selectionner
                                                                         votre fonction</label>

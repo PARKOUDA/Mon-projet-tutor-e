@@ -207,7 +207,6 @@
             <div class="form-row">
                 <div class="input-data">
                     <select name="departement_id" required >
-            
                         <option value="" disabled selected hidden>Selectionnez votre departement</option>
                         @foreach ($departements as $departement)
                         <option value="{{$departement->id}}">{{$departement->Nom}}</option>

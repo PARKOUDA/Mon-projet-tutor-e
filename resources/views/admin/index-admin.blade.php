@@ -17,6 +17,7 @@
                     <h2>Bienvenue ADMINISTRATEUR</h2>
                     <p class="mb-md-0">dans votre tableau de bord</p>
                   </div>
+
                   <div class="d-flex">
                     <i class="mdi mdi-home text-muted hover-cursor"></i>
                     <p class="text-muted mb-0 hover-cursor">
@@ -52,7 +53,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des enseignants</h4>
-                  10 
+                  {{ $totalEnseignant }} 
                   <p class="card-description">
                   </p>
                 </div>
@@ -65,7 +66,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des titres</h4>
-                  10 
+                  {{ $totalTitre }} 
                   <p class="card-description">
                   </p>
                 </div>
@@ -75,7 +76,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des grades</h4>
-                  10 
+                  {{ $totalGrade }}  
                   <p class="card-description">
                   </p>
                   
@@ -86,7 +87,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des fonctions</h4>
-                  10 
+                  {{ $totalFonction }} 
                   <p class="card-description">
                   </p>
                   
@@ -99,7 +100,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des ufrs</h4>
-                  10 
+                  {{ $totalUfr }} 
                   <p class="card-description">
                   </p>
                   
@@ -110,7 +111,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des departements</h4>
-                  10 
+                  {{ $totalDepartement }} 
                   <p class="card-description">
                   </p>
                   
@@ -124,7 +125,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des atos</h4>
-                  10 
+                  {{ $totalAtos }} 
                   <p class="card-description">
                   </p>
                   
@@ -137,7 +138,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des directions/services</h4>
-                  10 
+                  {{ $totalStructure }} 
                   <p class="card-description">
                   </p>
                   
@@ -148,7 +149,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des emplois</h4>
-                  10 
+                  {{ $totalEmploi }} 
                   <p class="card-description">
                   </p>
                   
@@ -159,7 +160,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Total des fonctions</h4>
-                  10 
+                  {{ $totalFao }} 
                   <p class="card-description">
                   </p>
                   
@@ -167,16 +168,6 @@
               </div>
             </div>
           </div>
-          
-
-          
-
-          {{-- <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
-            <div>
-              <a href="{{ route('admin.listes.enseignants') }}" class="btn btn-primary me-5">Enseignants</a>
-              <a href="{{ route('admin.listes.personnel-atos') }}" class="btn btn-warning">Personnels ATOS</a>
-            </div>
-          </div> --}}
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
