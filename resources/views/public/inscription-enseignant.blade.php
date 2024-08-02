@@ -38,7 +38,7 @@
             @csrf
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" name="Nom" required placeholder="Entrez votre nom">
+                    <input type="text" name="Nom" required placeholder="Entrez votre nom" >
                     <div class="underline"></div>
                     {{-- <label for="">Nom</label> --}}
                     @if ($errors->has('Nom'))
@@ -221,7 +221,7 @@
             </div>
 
             <div style="display: flex; justify-content: center;">
-                <button class="submit" style="background-color: #3498db; padding: 10px; border-radius: 10px; border:none; color:white; cursor: pointer; font-size:15px">Je m'inscris</button>
+                <button type="submit" class="submit" style="background-color: #3498db; padding: 10px; border-radius: 10px; border:none; color:white; cursor: pointer; font-size:15px">Je m'inscris.</button>
             </div>
             <br>
             <div style="display: flex; justify-content: center;">

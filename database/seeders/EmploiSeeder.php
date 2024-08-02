@@ -44,8 +44,6 @@ class EmploiSeeder extends Seeder
             'Nom' => 'Chauffeur'
         ]);
         Emploi::create([
-            'Nom' => 'Agent de liaison'
-        ]); Emploi::create([
             'Nom' => 'Adjoint(e) administratif'
         ]);
         Emploi::create([

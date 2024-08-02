@@ -29,7 +29,7 @@
             Bienvenue
         </div><br><br>
         <div style="text-align:center;font-size: 24px;">
-            Veuillez vous connecter pour continue
+            Veuillez vous connecter pour continuer
         </div>
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

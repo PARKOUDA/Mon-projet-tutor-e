@@ -57,7 +57,7 @@
                             <img src="{{asset('assets/images/UNZ LOGO.png')}}" alt="logo de unz" width="100px">
                         </div>
                         <div class="col-2">
-                            <a href="index.html" class="logo m-0 float-start">UNZ GP<span
+                            <a href="index.html" class="logo m-0 float-start">UNZ_GP<span
                                     class="text-primary">.</span></a>
                         </div>
                         <div class="col-6 text-center ">
@@ -125,13 +125,13 @@
                             <a href="#">
                                 @if ($personnel->Photo == '')
                                 <div class="d-flex justify-content-center">
-                                    <img src="{{asset('assets/images/inconnue.png')}}" class="card-img-top"
-                                    alt="Image">
+                                    <img src="{{asset('assets/images/inconnue.png')}}" class="card-img-top regulateurTaille rounded-circle ms-5"
+                                    alt="Image" style="width: 200px; height: 250px;">
                                 </div>
                                 @else
                                 <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('storage/' . $personnel->Photo) }}" class="card-img-top"
-                                    alt="Image"/>
+                                    <img src="{{ asset('storage/' . $personnel->Photo) }}" class="card-img-top regulateurTaille rounded-circle ms-5"
+                                    alt="Image" style="width: 200px; height: 250px;"/>
                                 </div>
                                 @endif
                             </a>

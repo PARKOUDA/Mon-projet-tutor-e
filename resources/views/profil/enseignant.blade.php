@@ -243,6 +243,14 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <th class="ps-0" scope="row">
+                                                                                Matricule :
+                                                                            </th>
+                                                                            <td class="text-muted">
+                                                                                {{ auth('enseignant')->user()->Matricule }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="ps-0" scope="row">
                                                                                 Mobile :
                                                                             </th>
                                                                             <td class="text-muted">

@@ -35,7 +35,7 @@
             Bienvenue
         </div><br><br>
         <div style="text-align:center;font-size: 24px;">
-            Veuillez vous connecter pour continue
+            Veuillez vous connecter pour continuer
         </div>
 
         <form action="{{route('connexion-enseignant-action')}}" method="POST" enctype="multipart/form-data">

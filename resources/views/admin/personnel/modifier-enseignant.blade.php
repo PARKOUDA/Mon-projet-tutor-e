@@ -34,7 +34,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <label for="" class="form-label">Email</label>
-                <input type="text" placeholder="Matricule" name="Email" value={{$enseignant->Email}} class="form-control" value="{{old('Email')}}">
+                <input type="email" placeholder="Email" name="Email" value={{$enseignant->Email}} class="form-control" >
 
                 @error('Email')
                     <div class="text-danger">{{$message}} </div>
@@ -168,7 +168,7 @@
                     <div class="text-danger">{{$message}} </div>
                 @enderror
             </div>
-            <input type="submit" value="Ajouter" class="form-control btn btn-primary text-white">
+            <input type="submit" value="Modifier" class="form-control btn btn-primary text-white">
         </form>
     </div>
 </div>

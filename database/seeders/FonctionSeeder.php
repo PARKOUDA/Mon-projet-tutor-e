@@ -49,7 +49,11 @@ class FonctionSeeder extends Seeder
         Fonction::create([
             'Nom' => 'Chef de cabinet'
             ]
+        ); Fonction::create([
+            'Nom' => 'Chef des Services des Affaires Financières (CSAF)'
+            ]
         ); 
+
         Fonction::create([
             'Nom' => 'Autre'
             ]

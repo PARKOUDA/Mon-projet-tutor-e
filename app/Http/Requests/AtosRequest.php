@@ -30,7 +30,7 @@ class AtosRequest extends FormRequest
             "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
             "Email" => ["required", "email", Rule::unique('atos')->ignore($this->id)],
-            "Mot_de_passe" => ['min:4'],
+            "password" => ['min:4'],
             "fao_id" => ["required",'exists:faos,id'],
             "Photo" => ['image', 'max:2000'],
             "structure_id" => ["required",'exists:structures,id'],
@@ -47,7 +47,7 @@ class AtosRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'Mot_de_passe' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
+            'password' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
         ]);
     }
 }

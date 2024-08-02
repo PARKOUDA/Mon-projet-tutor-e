@@ -38,7 +38,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'Chef de service de la comptabilité et caissier secondaire/ENS'
         ]);
         Fao::create([
-            'Nom' => 'DRH'
+            'Nom' => 'Directeur des Ressources Humaines (DRH)'
         ]);
         Fao::create([
             'Nom' => "Coordonnateur/trice de l'ACM"
@@ -131,7 +131,7 @@ class FaoSeeder extends Seeder
             'Nom' => 'Chef des Services des Affaires Financières de IUT (CSAF/IUT)'
         ]);
         Fao::create([
-            'Nom' => '(PRM)'
+            'Nom' => 'Personne Responsable du Marché (PRM)'
         ]);
         Fao::create([
             'Nom' => 'Chef de service scolarité de ED-LACOSHS et ED-ST'

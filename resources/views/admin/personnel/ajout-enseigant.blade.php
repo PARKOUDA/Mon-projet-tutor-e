@@ -33,7 +33,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <label for="" class="form-label">Email</label>
-                <input type="text" placeholder="Matricule" name="Email" class="form-control" value="{{old('Email')}}">
+                <input type="text" placeholder="Email" name="Email" class="form-control" value="{{old('Email')}}">
 
                 @error('Email')
                     <div class="text-danger">{{$message}} </div>
@@ -122,7 +122,7 @@
                         <option value="{{$ufr->id}}">{{$ufr->Nom}}</option>
                     @endforeach
                 </select>
-
+                    
                 @error('ufr_id')
                     <div class="text-danger">{{$message}} </div>
                 @enderror

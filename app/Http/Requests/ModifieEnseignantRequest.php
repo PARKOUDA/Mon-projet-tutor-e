@@ -29,7 +29,7 @@ class ModifieEnseignantRequest extends FormRequest
             "Prenom" => ["required"],
             "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
-            "Email" => ["nullable", "required", "email", Rule::unique('enseignants')->ignore($this->id)],
+            "Email" => ["nullable", "required", "email"], 
             "password" => ["nullable", 'min:4'],
             "titre_id" => ["required"],
             "Photo" => ["nullable", "image", 'max:2000'],
@@ -53,3 +53,4 @@ class ModifieEnseignantRequest extends FormRequest
         ]);
     }
 }
+    

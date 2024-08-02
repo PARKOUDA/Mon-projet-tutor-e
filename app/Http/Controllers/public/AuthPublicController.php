@@ -53,7 +53,7 @@ class AuthPublicController extends Controller
             $request->all(),
             [
                 'Email' => 'required|email|max:255|unique:users',
-                'password' => 'required|min:4|confirmed',
+               'Mot_de_passe' => 'required|min:4|confirmed',
                 'Matricule' => 'required',
                 'Nom' => 'required',
                 'Prenom' => 'required',
@@ -61,6 +61,7 @@ class AuthPublicController extends Controller
                 'Genre' => 'required',
                 'titre_id' => 'required',
                 'Photo' => 'nullable|image|mimes:jpeg,png,jpg|max:3072', // Photo is optional, must be an image, only jpeg, png, jpg and max size of 3MB
+                // 'Photo' => 'nullable|image|mimes:jpeg,png,jpg',
                 'grade_id' => 'required',
                 'fonction_id' => 'required',
                 'ufr_id' => 'required',
@@ -86,7 +87,7 @@ class AuthPublicController extends Controller
                 'Mot_de_passe.confirmed' => 'Le mot de passe doit être identique.',
                 'Photo.image' => 'Le champ Photo doit être une image.',
                 'Photo.mimes' => 'Le champ Photo doit être un fichier de type: jpeg, png, jpg.',
-                'Photo.max' => 'Le champ Photo ne doit pas dépasser 3 Mo.',
+                //'Photo.max' => 'Le champ Photo ne doit pas dépasser 3 Mo.',
             ]
         );
 

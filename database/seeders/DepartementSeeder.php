@@ -34,11 +34,11 @@ class DepartementSeeder extends Seeder
         Departement::create(['Nom' => 'Génie Electrique (GE)', 'ufr_id' => $iut]);
         Departement::create(['Nom' => 'Markéting et Gestion Commerciale (MGC)', 'ufr_id' => $iut]);
         Departement::create(['Nom' => 'Management des Entreprises Touristique et Gestion Hôtelière(MET-GH)', 'ufr_id' => $iut]);
-        Departement::create(['Nom' => 'Lettre moderne (LM)', 'ufr_id' => $ufrLsh]);
-        Departement::create(['Nom' => 'PHILOSOPHIE', 'ufr_id' => $ufrLsh]);
-        Departement::create(['Nom' => 'GEOGRAPHIE', 'ufr_id' => $ufrLsh]);
-        Departement::create(['Nom' => 'HISTOIRE', 'ufr_id' => $ufrLsh]);
-        Departement::create(['Nom' => 'LINGUSTIQUE', 'ufr_id' => $ufrLsh]);
+        Departement::create(['Nom' => 'Lettre Moderne (LM)', 'ufr_id' => $ufrLsh]);
+        Departement::create(['Nom' => 'Philosophie', 'ufr_id' => $ufrLsh]);
+        Departement::create(['Nom' => 'Géographie', 'ufr_id' => $ufrLsh]);
+        Departement::create(['Nom' => 'Histoire', 'ufr_id' => $ufrLsh]);
+        Departement::create(['Nom' => 'Lingustique', 'ufr_id' => $ufrLsh]);
         Departement::create(['Nom' => 'Psychologie', 'ufr_id' => $ufrLsh]);
         Departement::create(['Nom' => "Science de l'Information et de documentation (SID)", 'ufr_id' => $ufrLsh]);
         Departement::create(['Nom' => 'Autre', 'ufr_id' => $autre]);

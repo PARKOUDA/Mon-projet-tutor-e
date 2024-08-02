@@ -59,7 +59,7 @@ Route::get('/get-departements/{ufr_id}', [AuthPublicController::class, 'getDepar
     Route::get('/admin/personnels/ajout/enseignant', [PersonnelsController::class, 'ajoutEnseignant'])->name('admin.listes.ajout-enseignant');
     Route::post('/admin/personnels/ajout/enseignant', [PersonnelsController::class, 'sauvegardeEnseignant']);
     Route::get('/admin/personnels/ajout/enseignant/{enseignant}/modifier', [PersonnelsController::class, 'modifieEnseignant'])->name('admin.enseignant.modifier');
-    Route::put('/admin/personnels/enseignant/{enseignant}/modifier', [PersonnelsController::class, 'modifSauveEnseignant'])->name(' ');
+    Route::put('/admin/personnels/enseignant/{enseignant}/modifier', [PersonnelsController::class, 'modifSauveEnseignant'])->name('admin.enseignant.sauvegarde-enseignant');
     Route::delete('/admin/personnels/enseignant/{enseignant}', [PersonnelsController::class, 'supprimerEnseignant'])->name('admin.enseignant.supprimer');
     
     // Route de formulaire pour l'ajout d'un atos

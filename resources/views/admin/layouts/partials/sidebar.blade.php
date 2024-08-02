@@ -28,7 +28,7 @@
             {{ request()->routeIs('admin.services.ufrs') ? 'color' : '' }}"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="mdi mdi-animation menu-icon"></i>
-                    Services
+                    Gestions
                 </a>
                 <ul class="dropdown-menu">
                     <!-- Dropdown menu links -->

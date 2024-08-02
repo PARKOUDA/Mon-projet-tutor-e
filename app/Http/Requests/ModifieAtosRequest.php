@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ModifieAtosRequest extends FormRequest
@@ -28,11 +29,24 @@ class ModifieAtosRequest extends FormRequest
             "Genre" => ["required"],
             "Telephone" => ["required", "min:8", 'numeric'],
             "Email" => ["required", "email"],
-            "fao_id" => ["required",'exists:faos,id'],
+            "fao_id" => ["required",],
             "Photo" => ['image', 'max:2000'],
-            "structure_id" => ["required",'exists:structures,id'],
-            "emploi_id" => ["required",'exists:emplois,id'],
-            "role_id" => ["required",'exists:roles,id'],
+            "structure_id" => ["required"],
+            "emploi_id" => ["required"],
+            "role_id" => ["required"],
         ];
     }
+
+    /**
+     * Prétraitement des données avant la validation.
+     *
+     * @return array
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'password' => Hash::make($this->Mot_de_passe), // Hacher le mot de passe avant la validation
+        ]);
+    }
 }
+

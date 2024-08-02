@@ -224,7 +224,7 @@
                             {{-- <img src="{{ asset('assets/images/faces/face5.jpg') }}" alt="profile" /> --}}
                             @if (auth('enseignant')->check())
                                 @if (auth('enseignant')->user()->Photo == '')
-                                    <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
+                                    <img src="{{ asset('images/inconnue.png') }}" alt="image"
                                         class="profile-pic" />
                                 @else
                                     <img src="{{ asset('storage/' . auth('enseignant')->user()->Photo) }}"
@@ -234,7 +234,7 @@
                                     {{ auth('enseignant')->user()->Prenom }}</span>
                             @elseif (auth('atos')->check())
                                 @if (auth('atos')->user()->Photo == '')
-                                    <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image"
+                                    <img src="{{ asset('images/inconnue.png') }}" alt="image"
                                         class="profile-pic" />
                                 @else
                                     <img src="{{ asset('storage/' . auth('atos')->user()->Photo) }}" alt="image"
